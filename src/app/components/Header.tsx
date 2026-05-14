@@ -1,9 +1,52 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import React from "react";
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [pressedIndex, setPressedIndex] = useState<number | null>(null);
+    const [releasingIndex, setReleasingIndex] = useState<number | null>(null);
+    const router = useRouter();
+    const [scrolled, setScrolled] = useState<boolean | null>(null);
+    const [headerBottom, setHeaderBottom] = useState<number | null>(null);
+    const headerRef = useRef<HTMLElement>(null);
+    const [implantHover, setImplantHover] = useState(false);
+    const [implantLeft, setImplantLeft] = useState(0);
+    const implantRef = useRef<HTMLDivElement>(null);
+    
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 0);
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    useEffect(() => {
+        const updatePositions = () => {
+            if (headerRef.current) {
+                setHeaderBottom(headerRef.current.getBoundingClientRect().bottom);
+            }
+            if (implantRef.current) {
+                setImplantLeft(implantRef.current.getBoundingClientRect().left);
+            }
+        };
+        updatePositions();
+        window.addEventListener("resize", updatePositions);
+        window.addEventListener("scroll", updatePositions);
+        return () => {
+            window.removeEventListener("resize", updatePositions);
+            window.removeEventListener("scroll", updatePositions);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (implantRef.current) {
+            setImplantLeft(implantRef.current.getBoundingClientRect().left);
+        }
+    }, []);
 
     const sections = [
         { title: "診療内容", href: "/services" },
@@ -14,66 +57,229 @@ export default function Header() {
         { title: "ENGLISH", href: "/contact" },
     ];
 
+    const linkBase = `
+        relative inline-block py-1 transform-gpu
+        before:content-[''] before:absolute before:left-0 before:top-full
+        before:w-full before:h-4 before:pointer-events-auto
+        after:content-[''] after:absolute after:left-0 after:-bottom-[2px]
+        after:w-full after:h-[1px] after:bg-current
+        after:scale-x-0 after:origin-center
+        after:transition-transform after:duration-300
+        hover:after:scale-x-100
+    `;
+
+    const pressedClass = (i: number) =>
+        pressedIndex === i
+            ? "scale-93 translate-y-[1px] transition-transform duration-200 ease-out"
+            : "scale-100 translate-y-0 transition-transform duration-[500ms] ease-[cubic-bezier(0.12,1,0.25,1)]";
+
+    const handlePress = (i: number, href: string) => (e: React.MouseEvent) => {
+        e.preventDefault();
+        setPressedIndex(i);
+        setTimeout(() => {
+            setPressedIndex(null);
+            setReleasingIndex(i);
+            setTimeout(() => router.push(href), 190);
+        }, 200);
+    };
+
+    const handlePressImplant = (i: number, href: string) => (e: React.MouseEvent) => {
+        e.preventDefault();
+        setPressedIndex(i);
+        setTimeout(() => {
+            setPressedIndex(null);
+            setTimeout(() => router.push(href), 200);
+        }, 200);
+    };
+
     return (
         <>
-            {/* 上に伸ばした部分（引っ張ってもベージュが見えない） */}
-            <div className="fixed -top-60 left-0 w-full h-60 bg-green-200/90 z-40"></div>
+            <header ref={headerRef} className={`
+                fixed top-0 left-0 w-full h-[var(--header-height)]
+                z-20 px-6 font-[var(--font-en)]
+                transition-all duration-300 overflow-visible
+            `}
+                style={{
+                    background: "linear-gradient(to bottom, #deffeb, rgba(255,255,255,0))"
+                }}
+            >
+                <div className="mx-auto max-w-[1400px] h-full grid grid-cols-[auto_1fr_auto] items-center">
 
-            <header className="fixed top-0 left-0 w-full bg-green-200/90 backdrop-blur-md z-50 px-6 py-8 flex items-center text-gray-800 font-[var(--font-en)]">
-                {/* 左：ロゴ */}
-                <Link
-                    href="/"
-                    className="ml-[30px] md:ml-[60px] flex flex-col leading-tight"
-                >
-                    {/* 上の小さな文字 */}
-                    <span className="text-xs tracking-widest text-gray-600">
-                        医療法人  学而会
-                    </span>
+                    {/* 左：ロゴ */}
+                    <Link
+                        href="/"
+                        className="mr-[10px] flex items-center whitespace-nowrap"
+                        style={{
+                            marginLeft: "clamp(0px, 1vw, 5px)",
+                            gap: "clamp(0px, 20vw, 12px)",
+                            overflow: "visible"
+                        }}
+                    >
+                        <Image
+                            src="/logo.png"
+                            alt="ロゴ"
+                            width={50}
+                            height={50}
+                            className="object-contain"
+                            style={{
+                                width: "clamp(70px, 10vw, 150px)",
+                                height: "auto",
+                                alignSelf: "flex-end"
+                            }}
+                        />
+                        <div
+                            className="flex flex-col leading-tight"
+                            style={{ position: "relative", padding: "4px 16px" }}
+                        >
+                            {/* 水彩背景をabsoluteで重ねる */}
+                            <img
+                                src="/syusei4.PNG"
+                                alt=""
+                                width={50}
+                                height={50}
+                                style={{
+                                    position: "absolute",
+                                    top: "-58px",
+                                    left: "-38px",
+                                    zIndex: -1,
+                                    pointerEvents: "none",
+                                    opacity: 0.55,
+                                    maxWidth: "none",
+                                    maxHeight: "none",
+                                    width: "220px",
+                                    height: "162px"
+                                }}
+                            />
+                            <span className="tracking-widest text-gray-600 logo-sub">
+                                医療法人 学而会
+                            </span>
+                            <span className="font-semibold tracking-wide logo-main -ml-[10px]">
+                                永田歯科医院
+                            </span>
+                        </div>
+                    </Link>
 
-                    {/* メインロゴ */}
-                    <span className="text-2xl font-semibold tracking-wide">
-                        永田歯科
-                    </span>
-                </Link>
+                    {/* スマホ時だけ効く余白 */}
+                    <div className="flex-1 md:hidden" />
 
-                {/* 中央を押し広げる（スマホ） */}
-                <div className="flex-1"></div>
+                    {/* PC メニューを囲むdiv */}
+                    <div className="hidden md:flex flex-1 justify-center">
+                        <nav
+                            className="flex items-center whitespace-nowrap"
+                            style={{
+                                gap: "clamp(0px, 2.5vw, 80px)",
+                                fontSize: "clamp(10px, 1.5vw, 14px)",
+                                borderRadius: "8px",
+                                padding: "4px 12px"
+                            }}
+                        >
+                            {sections.map((sec, i) => {
+                                const divider = i > 0 ? (
+                                    <div key={`d-${i}`} style={{
+                                        width: "2px",
+                                        height: "1em",
+                                        backgroundColor: "rgba(100,150,120,0.5)",
+                                        flexShrink: 0
+                                    }} />
+                                ) : null;
 
-                {/* PC メニュー */}
-                <nav className="hidden md:flex gap-10 text-lg absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
-                    {sections.map((sec, i) => {
-                        if (sec.title === "インプラント") {
-                            return (
-                                <div className="relative group" key={i}>
-                                    <Link href={sec.href} className="hover:underline">{sec.title}</Link>
-                                    <div className="hidden group-hover:flex flex-col absolute top-full left-0 bg-green-200/90 shadow-md rounded min-w-[180px] p-2 z-50">
-                                        <Link href="/implant" className="px-3 py-2 hover:underline">インプラントとは</Link>
-                                        <Link href="/flow" className="px-3 py-2 hover:underline">治療の流れ</Link>
-                                        <Link href="/price" className="px-3 py-2 hover:underline">料金</Link>
-                                        <Link href="/qa" className="px-3 py-2 hover:underline">Q&A</Link>
-                                    </div>
-                                </div>
-                            );
-                        }
-                        return <Link key={i} href={sec.href} className="hover:underline">{sec.title}</Link>;
-                    })}
-                </nav>
+                                if (sec.title === "インプラント") {
+                                    return (
+                                        <React.Fragment key={i}>
+                                            {divider}
+                                            <div
+                                                ref={implantRef}
+                                                className="relative"
+                                                onMouseEnter={() => setImplantHover(true)}
+                                                onMouseLeave={() => setImplantHover(false)}
+                                            >
+                                                <Link
+                                                    href={sec.href}
+                                                    onClick={handlePressImplant(i, sec.href)}
+                                                    className={`${linkBase} ${pressedClass(i)}`}
+                                                >
+                                                    {sec.title}
+                                                </Link>
+                                                <div
+                                                    className="absolute left-0 w-full"
+                                                    style={{ height: "40px", bottom: "-40px" }}
+                                                />
+                                            </div>
+                                        </React.Fragment>
+                                    );
+                                }
 
-                {/* スマホハンバーガー */}
-                <button className="text-3xl md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-                    {menuOpen ? "✕" : "☰"}
-                </button>
+                                return (
+                                    <React.Fragment key={i}>
+                                        {divider}
+                                        <Link
+                                            href={sec.href}
+                                            onClick={handlePress(i, sec.href)}
+                                            className={`${linkBase} ${pressedClass(i)}`}
+                                        >
+                                            {sec.title}
+                                        </Link>
+                                    </React.Fragment>
+                                );
+                            })}
+                        </nav>
+                    </div>
 
-                {menuOpen && (
-                    <nav className="md:hidden absolute left-0 top-16 w-full bg-green-200/90 p-4 flex flex-col gap-4 z-50">
-                        {sections.map((sec, i) => (
-                            <Link key={i} href={sec.href} className="hover:underline" onClick={() => setMenuOpen(false)}>
-                                {sec.title}
-                            </Link>
-                        ))}
-                    </nav>
-                )}
+                    {/* スマホ ハンバーガー */}
+                    <button
+                        className={`
+                            text-3xl md:hidden ml-auto text-gray-800
+                            transition-transform duration-700 ease-in-out
+                            transform-gpu [perspective:800px]
+                            ${menuOpen
+                                ? "rotateX(18deg) translateZ(-8px) scale-95"
+                                : "rotateX(0deg) translateZ(0) scale-100"
+                            }
+                            active:scale-95
+                        `}
+                        onClick={() => setMenuOpen(!menuOpen)}
+                    >
+                        {menuOpen ? "✕" : "☰"}
+                    </button>
+
+                    {/* スマホ メニュー */}
+                    {menuOpen && (
+                        <nav className="md:hidden absolute left-0 top-[clamp(56px,6vw,84px)] w-full bg-green-200/90 p-4 flex flex-col gap-4 z-30">
+                            {sections.map((sec, i) => (
+                                <Link
+                                    key={i}
+                                    href={sec.href}
+                                    className="hover:underline"
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    {sec.title}
+                                </Link>
+                            ))}
+                        </nav>
+                    )}
+
+                </div>
             </header>
+
+            {/* ドロップダウン */}
+            {implantHover && (
+                <div
+                    className="fixed bg-[#deffeb]/90 shadow-md rounded min-w-[140px] pb-2 z-30"
+                    style={{
+                        top: headerBottom !== null ? `${headerBottom}px` : "var(--header-height)",
+                        left: `${implantLeft}px`,
+                        display: "flex",
+                        flexDirection: "column",
+                        paddingRight: "16px"
+                    }}
+                    onMouseEnter={() => setImplantHover(true)}
+                    onMouseLeave={() => setImplantHover(false)}
+                >
+                    <Link href="/flow" style={{ display: "block", paddingLeft: "12px", paddingRight: "0px" }} className="py-2 hover:underline">治療の流れ</Link>
+                    <Link href="/price" style={{ display: "block", paddingLeft: "12px", paddingRight: "0px" }} className="py-2 hover:underline">料金</Link>
+                    <Link href="/qa" style={{ display: "block", paddingLeft: "12px", paddingRight: "0px" }} className="py-2 hover:underline">Q&A</Link>
+                </div>
+            )}
         </>
     );
 }

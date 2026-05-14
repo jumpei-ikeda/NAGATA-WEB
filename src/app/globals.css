@@ -1,44 +1,50 @@
 @import "tailwindcss";
 
-/* 🎨 全体の背景色と文字色を固定 */
-html {
-  background-color: #f7f3e8;
-  /* ベージュ */
-  position: relative;
-  /* ← 必須 */
+@layer utilities {
+  .logo-sub {
+    font-size: clamp(10px, 1.02vw, 12px);
+    line-height: 1;
+  }
+
+  .logo-main {
+    font-size: clamp(15px, 1.88vw, 21px);
+    line-height: 1;
+  }
 }
 
-/* 左の縦線 */
-html::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 30px;
-  height: 120vh;
-  background-color: white;
-  pointer-events: none;
-  z-index: -1;
-  /* ヘッダーより背面へ */
-}
+@layer base {
 
-/* 右の縦線 */
-html::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 30px;
-  height: 120vh;
-  background-color: white;
-  pointer-events: none;
-  z-index: -1;
-}
+  /* スマホでは余白なし */
+  :root {
+    --header-height: clamp(85px, 12vw, 120px);
+    --footer-height: clamp(60px, 10vw, 70px);
+    --side-gap: 0px;
+  }
+    html,
+    body {
+  
+      background-color: #ffffff;
+  
+    }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  color: #3a3a3a;
-  min-height: 100%;
+  /* md以上で出す */
+  @media (min-width: 768px) {
+    :root {
+      --side-gap: clamp(0px, calc((100vw - 768px) * 0.05), 40px);
+    }
+  }
+
+        .content-wrapper::before,
+        .content-wrapper::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: var(--side-gap);
+          pointer-events: none;
+          z-index: 10;
+          background: #f7f3e8;
+        }
+        .content-wrapper::before {left: 0;}
+        .content-wrapper::after {right: 0;}
 }

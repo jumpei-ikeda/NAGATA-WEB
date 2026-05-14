@@ -11,16 +11,17 @@ const notoSerifJP = Noto_Serif_JP({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      <body className={`${notoSerifJP.className} bg-[#f7f3e8] min-h-screen flex flex-col`}>
-
+      <body className={`${notoSerifJP.className} min-h-screen flex flex-col`}>
+        
         <Header />
 
-        <main className="flex-1 pt-[80px]">
-          {children}
+        <main className="relative flex-1 pt-[var(--header-height)]" style={{ backgroundColor: "#ffffff" }}>
+          <div className="content-wrapper relative">
+            {children}
+          </div>
         </main>
-
-        <footer className="bg-green-200/90 text-[#3a3a3a] p-6 text-center">
-          © 2025 永田歯科 All Rights Reserved.
+        <footer className="bg-[#d4ffe3]/80 text-[#3a3a3a] py-4 px-4 text-center text-sm break-words">
+          永田歯科医院 〒143-0015 東京都大田区大森西6-17-1 4th-one TEL：03-6410-8008
         </footer>
 
       </body>
