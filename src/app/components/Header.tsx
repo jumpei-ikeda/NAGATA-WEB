@@ -53,7 +53,6 @@ export default function Header() {
         { title: "当院について", href: "/about" },
         { title: "インプラント", href: "/implant" },
         { title: "アクセス", href: "/access" },
-        { title: "お問い合わせ", href: "/contact" },
         { title: "ENGLISH", href: "/contact" },
     ];
 
@@ -100,7 +99,8 @@ export default function Header() {
                 transition-all duration-300 overflow-visible
             `}
                 style={{
-                    background: "linear-gradient(to bottom, #deffeb, rgba(255,255,255,0))"
+                    background:
+                        "linear-gradient(to bottom, #ffffff 0px, #deffeb 60px, rgba(222,255,235,0.2) 95%, rgba(222,255,235,0) 100%)"
                 }}
             >
                 <div className="mx-auto max-w-[1400px] h-full grid grid-cols-[auto_1fr_auto] items-center">
@@ -122,7 +122,7 @@ export default function Header() {
                             height={50}
                             className="object-contain"
                             style={{
-                                width: "clamp(70px, 10vw, 150px)",
+                                width: "clamp(60px, 10vw, 150px)",
                                 height: "auto",
                                 alignSelf: "flex-end"
                             }}
@@ -139,15 +139,15 @@ export default function Header() {
                                 height={50}
                                 style={{
                                     position: "absolute",
-                                    top: "-58px",
-                                    left: "-38px",
+                                    top: "clamp(-55px, -5vw, -15px)",
+                                    left: "clamp(-25px, -30vw, -15px)",
                                     zIndex: -1,
                                     pointerEvents: "none",
                                     opacity: 0.55,
                                     maxWidth: "none",
                                     maxHeight: "none",
-                                    width: "220px",
-                                    height: "162px"
+                                    width: "clamp(120px, 18vw, 220px)",
+                                    height: "clamp(88px, 13vw, 162px)"
                                 }}
                             />
                             <span className="tracking-widest text-gray-600 logo-sub">

@@ -5,6 +5,7 @@ import Image from "next/image";
 export default function BackgroundSlider() {
     const images = [
         "/images/bg/受付.jpg",
+        "/images/bg/外観.jpg",
     ];
 
     const [index, setIndex] = useState(0);
@@ -12,7 +13,7 @@ export default function BackgroundSlider() {
     useEffect(() => {
         const timer = setInterval(() => {
             setIndex((prev) => (prev + 1) % images.length);
-        }, 4000);
+        }, 5500);
         return () => clearInterval(timer);
     }, []);
 
