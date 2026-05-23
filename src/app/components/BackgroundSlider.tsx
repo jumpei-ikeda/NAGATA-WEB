@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export default function BackgroundSlider() {
     const images = [
+        "/images/bg/外観.jpeg",
         "/images/bg/受付.jpg",
-        "/images/bg/外観.jpg",
     ];
 
     const [index, setIndex] = useState(0);

@@ -244,7 +244,10 @@ export default function Header() {
 
                     {/* スマホ メニュー */}
                     {menuOpen && (
-                        <nav className="md:hidden absolute left-0 top-[clamp(56px,6vw,84px)] w-full bg-green-200/90 p-4 flex flex-col gap-4 z-30">
+                        <nav
+                            className="md:hidden absolute left-0 w-full bg-[#deffeb]/90 p-4 flex flex-col gap-4 z-30"
+                            style={{ top: headerRef.current ? `${headerRef.current.clientHeight}px` : "clamp(56px,6vw,84px)" }}
+                        >
                             {sections.map((sec, i) => (
                                 <Link
                                     key={i}
