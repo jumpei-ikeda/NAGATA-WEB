@@ -114,8 +114,6 @@ export default function ImplantPage() {
         }
       `}</style>
 
-            <div style={{ height: "var(--header-height, 72px)" }} />
-
             {/* ヒーロー */}
             <section style={{ padding: "60px 40px 48px", maxWidth: "1100px", margin: "0 auto" }}>
                 <div className={`fade-up ${visible ? "in" : ""}`}>

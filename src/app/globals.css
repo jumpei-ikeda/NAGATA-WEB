@@ -30,7 +30,7 @@
   /* md以上で出す */
   @media (min-width: 768px) {
     :root {
-      --side-gap: clamp(0px, calc((100vw - 768px) * 0.05), 40px);
+      --side-gap: clamp(0px, calc((100vw - 768px) * 0.1), 80px);
     }
   }
 
@@ -43,7 +43,7 @@
           width: var(--side-gap);
           pointer-events: none;
           z-index: 10;
-          background: #f7f3e8;
+          background: #ffffff;
         }
         .content-wrapper::before {left: 0;}
         .content-wrapper::after {right: 0;}

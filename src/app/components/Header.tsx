@@ -202,7 +202,7 @@ export default function Header() {
                                                 </Link>
                                                 <div
                                                     className="absolute left-0 w-full"
-                                                    style={{ height: "40px", bottom: "-40px" }}
+                                                    style={{ height: "60px", bottom: "-60px" }}
                                                 />
                                             </div>
                                         </React.Fragment>
@@ -269,7 +269,7 @@ export default function Header() {
                 <div
                     className="fixed bg-[#deffeb]/90 shadow-md rounded min-w-[140px] pb-2 z-30"
                     style={{
-                        top: headerBottom !== null ? `${headerBottom}px` : "var(--header-height)",
+                        top: headerRef.current ? `${headerRef.current.getBoundingClientRect().bottom}px` : "var(--header-height)",
                         left: `${implantLeft}px`,
                         display: "flex",
                         flexDirection: "column",
