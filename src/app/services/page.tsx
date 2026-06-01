@@ -121,9 +121,6 @@ export default function ServicesPage() {
         .hours-cell.tri { color: #e07a30; font-weight: 600; }
       `}</style>
 
-            {/* ヘッダー余白 */}
-            <div style={{ height: "var(--header-height, 72px)" }} />
-
             {/* ヒーロー */}
             <section style={{ padding: "60px 40px 48px", maxWidth: "1100px", margin: "0 auto" }}>
                 <div className={`fade-up ${visible ? "in" : ""}`}>

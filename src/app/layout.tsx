@@ -19,8 +19,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
 
         <main
-          className="relative flex-1 pt-[var(--header-height)]"
-          style={{ backgroundColor: "#ffffff" }}
+          className="relative flex-1"
+          style={{ backgroundColor: "#ffffff", paddingTop: "var(--header-height)" }}
         >
           <div className="content-wrapper relative">
             {children}

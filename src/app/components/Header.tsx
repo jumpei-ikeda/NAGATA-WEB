@@ -16,8 +16,23 @@ export default function Header() {
     const [implantHover, setImplantHover] = useState(false);
     const [implantLeft, setImplantLeft] = useState(0);
     const implantRef = useRef<HTMLDivElement>(null);
+    const hamburgerRef = useRef<HTMLButtonElement>(null);
+    const menuRef = useRef<HTMLElement>(null);
     
 
+    useEffect(() => {
+        if (!menuOpen) return;
+        const handleClick = (e: MouseEvent) => {
+            if (
+                hamburgerRef.current?.contains(e.target as Node) ||
+                menuRef.current?.contains(e.target as Node)
+            ) return;
+            setMenuOpen(false);
+        };
+        document.addEventListener("mousedown", handleClick);
+        return () => document.removeEventListener("mousedown", handleClick);
+    }, [menuOpen]);
+    
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 0);
         window.addEventListener("scroll", onScroll);
@@ -70,7 +85,9 @@ export default function Header() {
     const pressedClass = (i: number) =>
         pressedIndex === i
             ? "scale-93 translate-y-[1px] transition-transform duration-200 ease-out"
-            : "scale-100 translate-y-0 transition-transform duration-[500ms] ease-[cubic-bezier(0.12,1,0.25,1)]";
+            : releasingIndex === i
+                ? "scale-105 translate-y-[-1px] transition-transform duration-150 ease-out"
+                : "scale-100 translate-y-0 transition-transform duration-[500ms] ease-[cubic-bezier(0.12,1,0.25,1)]";
 
     const handlePress = (i: number, href: string) => (e: React.MouseEvent) => {
         e.preventDefault();
@@ -78,16 +95,7 @@ export default function Header() {
         setTimeout(() => {
             setPressedIndex(null);
             setReleasingIndex(i);
-            setTimeout(() => router.push(href), 190);
-        }, 200);
-    };
-
-    const handlePressImplant = (i: number, href: string) => (e: React.MouseEvent) => {
-        e.preventDefault();
-        setPressedIndex(i);
-        setTimeout(() => {
-            setPressedIndex(null);
-            setTimeout(() => router.push(href), 200);
+            setTimeout(() => router.push(href), 100);
         }, 200);
     };
 
@@ -195,7 +203,7 @@ export default function Header() {
                                             >
                                                 <Link
                                                     href={sec.href}
-                                                    onClick={handlePressImplant(i, sec.href)}
+                                                    onClick={handlePress(i, sec.href)}
                                                     className={`${linkBase} ${pressedClass(i)}`}
                                                 >
                                                     {sec.title}
@@ -227,6 +235,7 @@ export default function Header() {
 
                     {/* スマホ ハンバーガー */}
                     <button
+                        ref={hamburgerRef}
                         className={`
                             text-3xl md:hidden ml-auto text-gray-800
                             transition-transform duration-700 ease-in-out
@@ -245,8 +254,9 @@ export default function Header() {
                     {/* スマホ メニュー */}
                     {menuOpen && (
                         <nav
-                            className="md:hidden absolute left-0 w-full bg-[#deffeb]/90 p-4 flex flex-col gap-4 z-30"
-                            style={{ top: headerRef.current ? `${headerRef.current.clientHeight}px` : "clamp(56px,6vw,84px)" }}
+                            ref={menuRef}
+                            className="md:hidden absolute left-0 w-full bg-[#deffeb]/90 p-4 flex flex-col gap-4 z-30 items-center"
+                            style={{ top: headerRef.current ? `${headerRef.current.clientHeight - 20}px` : "clamp(56px,6vw,84px)" }}
                         >
                             {sections.map((sec, i) => (
                                 <Link

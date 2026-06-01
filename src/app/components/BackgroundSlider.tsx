@@ -26,14 +26,14 @@ export default function BackgroundSlider() {
                     src={src}
                     alt="background"
                     fill
-                    sizes="100vw"
+                    sizes="60vw"
+                    style={{ objectFit: "contain", objectPosition: "center" }}
                     className={`
-            object-fill
-            transition-opacity
-            duration-1000
-            ease-in-out
-            ${index === i ? "opacity-100" : "opacity-0"}
-          `}
+        transition-opacity
+        duration-1000
+        ease-in-out
+        ${index === i ? "opacity-100" : "opacity-0"}
+    `}
                     priority
                 />
             ))}
