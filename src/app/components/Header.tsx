@@ -18,7 +18,7 @@ export default function Header() {
     const implantRef = useRef<HTMLDivElement>(null);
     const hamburgerRef = useRef<HTMLButtonElement>(null);
     const menuRef = useRef<HTMLElement>(null);
-    
+    const [implantBottom, setImplantBottom] = useState(0);
 
     useEffect(() => {
         if (!menuOpen) return;
@@ -46,6 +46,7 @@ export default function Header() {
             }
             if (implantRef.current) {
                 setImplantLeft(implantRef.current.getBoundingClientRect().left);
+                setImplantBottom(implantRef.current.getBoundingClientRect().bottom);
             }
         };
         updatePositions();
@@ -147,15 +148,15 @@ export default function Header() {
                                 height={50}
                                 style={{
                                     position: "absolute",
-                                    top: "clamp(-55px, -5vw, -15px)",
-                                    left: "clamp(-25px, -30vw, -15px)",
+                                    top: "clamp(-55px, -5vw, -30px)",
+                                    left: "clamp(-55px, -3vw, -25px)",
                                     zIndex: -1,
                                     pointerEvents: "none",
                                     opacity: 0.55,
                                     maxWidth: "none",
                                     maxHeight: "none",
-                                    width: "clamp(120px, 18vw, 220px)",
-                                    height: "clamp(88px, 13vw, 162px)"
+                                    width: "clamp(152px, 19vw, 220px)",
+                                    height: "clamp(100px, 13vw, 160px)"
                                 }}
                             />
                             <span className="tracking-widest text-gray-600 logo-sub">
@@ -251,39 +252,46 @@ export default function Header() {
                         {menuOpen ? "✕" : "☰"}
                     </button>
 
-                    {/* スマホ メニュー */}
-                    {menuOpen && (
-                        <nav
-                            ref={menuRef}
-                            className="md:hidden absolute left-0 w-full bg-[#deffeb]/90 p-4 flex flex-col gap-4 z-30 items-center"
-                            style={{ top: headerRef.current ? `${headerRef.current.clientHeight - 20}px` : "clamp(56px,6vw,84px)" }}
-                        >
-                            {sections.map((sec, i) => (
-                                <Link
-                                    key={i}
-                                    href={sec.href}
-                                    className="hover:underline"
-                                    onClick={() => setMenuOpen(false)}
-                                >
-                                    {sec.title}
-                                </Link>
-                            ))}
-                        </nav>
-                    )}
-
+                   
                 </div>
             </header>
+
+            {/* スマホ メニュー */}
+            {menuOpen && (
+                <nav
+                    ref={menuRef}
+                    className="md:hidden fixed left-0 w-full bg-[#deffeb]/90 p-4 flex flex-col gap-4 z-10 items-center"
+                    style={{ top: headerRef.current ? `${headerRef.current.clientHeight - 24}px` : "clamp(56px,6vw,84px)" }}
+                >
+                    {sections.map((sec, i) => (
+                        <Link
+                            key={i}
+                            href={sec.href}
+                            className="hover:underline"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            {sec.title}
+                        </Link>
+                    ))}
+                </nav>
+            )}
 
             {/* ドロップダウン */}
             {implantHover && (
                 <div
-                    className="fixed bg-[#deffeb]/90 shadow-md rounded min-w-[140px] pb-2 z-30"
+                    className="fixed bg-[#deffeb]/90 shadow-md rounded min-w-[140px] pb-2 z-20"
                     style={{
-                        top: headerRef.current ? `${headerRef.current.getBoundingClientRect().bottom}px` : "var(--header-height)",
-                        left: `${implantLeft}px`,
+                        top: implantRef.current
+                            ? `${implantRef.current.getBoundingClientRect().bottom + implantRef.current.getBoundingClientRect().height * 0.5}px`
+                            : "var(--header-height)",
+                        left: `${implantLeft - 10}px`,
                         display: "flex",
                         flexDirection: "column",
-                        paddingRight: "16px"
+                        paddingRight: "16px",
+                        fontSize: "clamp(10px, 1.5vw, 16px)",
+                        minWidth: "clamp(100px, 12vw, 120px)",
+                        animation: "slideDown 0.25s ease forwards",
+                        transformOrigin: "top",
                     }}
                     onMouseEnter={() => setImplantHover(true)}
                     onMouseLeave={() => setImplantHover(false)}

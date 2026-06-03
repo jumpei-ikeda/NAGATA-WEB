@@ -12,6 +12,16 @@
   }
 }
 
+@keyframes slideDown {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
 @layer base {
 
   /* スマホでは余白なし */

@@ -1,8 +1,19 @@
+"use client";
+import { useEffect, useState } from "react";
 import BackgroundSlider from "./components/BackgroundSlider";
 
 export default function Home() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setVisible(true), 80);
+  }, []);
   return (
     <>
+      <style>{`
+        .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-up.in { opacity: 1; transform: translateY(0); }
+      `}</style>
     
       {/* ヒーロー部分 */}
       <section className="relative w-full flex" style={{ marginTop: "calc(-1 * var(--header-height) + 120px)" }}>
@@ -16,7 +27,7 @@ export default function Home() {
 
           {/* 左半分：キャッチコピー */}
           <div
-            className="relative z-10 flex flex-col justify-center"
+            className={`fade-up ${visible ? "in" : ""} relative z-10 flex flex-col justify-center`}
             style={{
               width: "35%",
               padding: "clamp(24px, 4vw, 60px)",
@@ -84,9 +95,20 @@ export default function Home() {
           </div>
 
           {/* 右半分：写真スライダー */}
-          <div className="relative overflow-hidden" style={{ width: "65%", height: "100%", paddingRight: "clamp(8px, 2vw, 24px)", paddingTop: "clamp(8px, 4vw, 50px)", maxHeight: "400px" }}>
+          <div
+            className={`fade-up ${visible ? "in" : ""} relative overflow-hidden`}
+            style={{
+              width: "65%",
+              height: "100%",
+              paddingRight: "clamp(8px, 2vw, 24px)",
+              paddingTop: "clamp(8px, 4vw, 50px)",
+              maxHeight: "400px",
+              transitionDelay: "0.15s"
+            }}
+          >
             <BackgroundSlider />
           </div>
+
 
         </div>
       </section>
