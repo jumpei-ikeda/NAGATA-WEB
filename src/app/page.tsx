@@ -27,7 +27,7 @@ export default function Home() {
 
           {/* 左半分：キャッチコピー */}
           <div
-            className={`fade-up ${visible ? "in" : ""} relative z-10 flex flex-col justify-center`}
+            className={`fade-up ${visible ? "in" : ""} relative flex flex-col justify-center`}
             style={{
               width: "35%",
               padding: "clamp(24px, 4vw, 60px)",

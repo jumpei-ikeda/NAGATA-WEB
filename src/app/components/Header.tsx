@@ -69,7 +69,7 @@ export default function Header() {
         { title: "当院について", href: "/about" },
         { title: "インプラント", href: "/implant" },
         { title: "アクセス", href: "/access" },
-        { title: "ENGLISH", href: "/contact" },
+        { title: "お問い合わせ", href: "/contact" },
     ];
 
     const linkBase = `
@@ -109,7 +109,7 @@ export default function Header() {
             `}
                 style={{
                     background:
-                        "linear-gradient(to bottom, #ffffff 0px, #deffeb 60px, rgba(222,255,235,0.2) 95%, rgba(222,255,235,0) 100%)"
+                        "linear-gradient(to bottom, #ffffff 0px, #deffeb 60px, rgba(222, 255, 235, 0.36) 95%, rgba(222, 255, 235, 0.07) 100%)"
                 }}
             >
                 <div className="mx-auto max-w-[1400px] h-full grid grid-cols-[auto_1fr_auto] items-center">
@@ -201,6 +201,12 @@ export default function Header() {
                                                 className="relative"
                                                 onMouseEnter={() => setImplantHover(true)}
                                                 onMouseLeave={() => setImplantHover(false)}
+                                                style={{
+                                                    borderRadius: implantHover ? "8px 8px 0 0" : "8px",
+                                                    background: implantHover ? "#deffeb00" : "transparent",
+                                                    transition: "background 0.2s ease",
+                                                    padding: "4px 8px",
+                                                }}
                                             >
                                                 <Link
                                                     href={sec.href}
@@ -209,10 +215,29 @@ export default function Header() {
                                                 >
                                                     {sec.title}
                                                 </Link>
-                                                <div
-                                                    className="absolute left-0 w-full"
-                                                    style={{ height: "60px", bottom: "-60px" }}
-                                                />
+                                                {implantHover && (
+                                                    <div
+                                                        className="absolute flex flex-col"
+                                                        style={{
+                                                            top: "100%",
+                                                            left: "clamp(-40px, -2vw, -5px)",
+                                                            right: "clamp(-40px, -2vw, -5px)",
+                                                            background: "#deffebe9",
+                                                            borderRadius: "0 0 8px 8px",
+                                                            fontSize: "clamp(10px, 1.5vw, 14px)",
+                                                            animation: "slideDown 0.25s ease forwards",
+                                                            transformOrigin: "top",
+                                                            paddingBottom: "4px",
+                                                            borderLeft: "1px solid rgba(100,150,120,0.4)",
+                                                            borderRight: "1px solid rgba(100,150,120,0.4)",
+                                                            borderBottom: "1px solid rgba(100,150,120,0.4)",
+                                                        }}
+                                                    >
+                                                        <Link href="/flow" className="py-2 hover:underline whitespace-nowrap text-center">治療の流れ</Link>
+                                                        <Link href="/price" className="py-2 hover:underline whitespace-nowrap text-center">料金</Link>
+                                                        <Link href="/qa" className="py-2 hover:underline whitespace-nowrap text-center">Q&A</Link>
+                                                    </div>
+                                                )}
                                             </div>
                                         </React.Fragment>
                                     );
@@ -260,46 +285,32 @@ export default function Header() {
             {menuOpen && (
                 <nav
                     ref={menuRef}
-                    className="md:hidden fixed left-0 w-full bg-[#deffeb]/90 p-4 flex flex-col gap-4 z-10 items-center"
-                    style={{ top: headerRef.current ? `${headerRef.current.clientHeight - 24}px` : "clamp(56px,6vw,84px)" }}
+                    className="md:hidden fixed left-0 w-full pt-8 px-4 pb-4 flex flex-col gap-4 z-10 items-center"
+                    style={{
+                        top: headerRef.current ? `${headerRef.current.clientHeight - 24}px` : "clamp(56px,6vw,84px)",
+                        background: "linear-gradient(170deg, #deffebef 0%, #ebfffcf9 50%, #dffbf1ef 100%)",
+                    }}
                 >
                     {sections.map((sec, i) => (
-                        <Link
-                            key={i}
-                            href={sec.href}
-                            className="hover:underline"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            {sec.title}
-                        </Link>
+                        <React.Fragment key={i}>
+                            {i > 0 && <div style={{ width: "30%", height: "1px", backgroundColor: "rgba(100,150,120,0.4)" }} />}
+                            <Link
+                                href={sec.href}
+                                className="hover:underline"
+                                onClick={() => setMenuOpen(false)}
+                            >
+                                {sec.title}
+                            </Link>
+                            {sec.title === "インプラント" && (
+                                <div className="flex flex-col gap-3 text-l text-gray-600 -mt-2 self-start ml-[calc(50%-30px)]">
+                                    <Link href="/flow" className="hover:underline" onClick={() => setMenuOpen(false)}>└ 治療の流れ</Link>
+                                    <Link href="/price" className="hover:underline" onClick={() => setMenuOpen(false)}>└ 料金</Link>
+                                    <Link href="/qa" className="hover:underline" onClick={() => setMenuOpen(false)}>└ Q&A</Link>
+                                </div>
+                            )}
+                        </React.Fragment>
                     ))}
                 </nav>
-            )}
-
-            {/* ドロップダウン */}
-            {implantHover && (
-                <div
-                    className="fixed bg-[#deffeb]/90 shadow-md rounded min-w-[140px] pb-2 z-20"
-                    style={{
-                        top: implantRef.current
-                            ? `${implantRef.current.getBoundingClientRect().bottom + implantRef.current.getBoundingClientRect().height * 0.5}px`
-                            : "var(--header-height)",
-                        left: `${implantLeft - 10}px`,
-                        display: "flex",
-                        flexDirection: "column",
-                        paddingRight: "16px",
-                        fontSize: "clamp(10px, 1.5vw, 16px)",
-                        minWidth: "clamp(100px, 12vw, 120px)",
-                        animation: "slideDown 0.25s ease forwards",
-                        transformOrigin: "top",
-                    }}
-                    onMouseEnter={() => setImplantHover(true)}
-                    onMouseLeave={() => setImplantHover(false)}
-                >
-                    <Link href="/flow" style={{ display: "block", paddingLeft: "12px", paddingRight: "0px" }} className="py-2 hover:underline">治療の流れ</Link>
-                    <Link href="/price" style={{ display: "block", paddingLeft: "12px", paddingRight: "0px" }} className="py-2 hover:underline">料金</Link>
-                    <Link href="/qa" style={{ display: "block", paddingLeft: "12px", paddingRight: "0px" }} className="py-2 hover:underline">Q&A</Link>
-                </div>
             )}
         </>
     );
