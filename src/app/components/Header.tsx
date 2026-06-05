@@ -148,8 +148,8 @@ export default function Header() {
                                 height={50}
                                 style={{
                                     position: "absolute",
-                                    top: "clamp(-55px, -4.3vw, -30px)",
-                                    left: "clamp(-55px, -3.3vw, -25px)",
+                                    top: "clamp(-55px, -4.6vw, -30px)",
+                                    left: "clamp(-55px, -3.2vw, -25px)",
                                     zIndex: -1,
                                     pointerEvents: "none",
                                     opacity: 0.55,
