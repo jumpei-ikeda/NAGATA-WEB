@@ -203,7 +203,7 @@ export default function Header() {
                                                 onMouseLeave={() => setImplantHover(false)}
                                                 style={{
                                                     borderRadius: implantHover ? "8px 8px 0 0" : "8px",
-                                                    background: implantHover ? "#deffeb00" : "transparent",
+                                                    background: implantHover ? "#deffebb9" : "transparent",
                                                     transition: "background 0.2s ease",
                                                     padding: "4px 8px",
                                                 }}
@@ -219,10 +219,10 @@ export default function Header() {
                                                     <div
                                                         className="absolute flex flex-col"
                                                         style={{
-                                                            top: "100%",
+                                                            top: "105%",
                                                             left: "clamp(-40px, -2vw, -5px)",
                                                             right: "clamp(-40px, -2vw, -5px)",
-                                                            background: "#deffebe9",
+                                                            background: "linear-gradient(to bottom, #d9ffe800 0%, #deffeb 15%)",
                                                             borderRadius: "0 0 8px 8px",
                                                             fontSize: "clamp(10px, 1.5vw, 14px)",
                                                             animation: "slideDown 0.25s ease forwards",
@@ -233,9 +233,9 @@ export default function Header() {
                                                             borderBottom: "1px solid rgba(100,150,120,0.4)",
                                                         }}
                                                     >
-                                                        <Link href="/flow" className="py-2 hover:underline whitespace-nowrap text-center">治療の流れ</Link>
-                                                        <Link href="/price" className="py-2 hover:underline whitespace-nowrap text-center">料金</Link>
-                                                        <Link href="/qa" className="py-2 hover:underline whitespace-nowrap text-center">Q&A</Link>
+                                                        <Link href="/flow" className="py-3 hover:underline whitespace-nowrap text-center">治療の流れ</Link>
+                                                        <Link href="/price" className="py-3 hover:underline whitespace-nowrap text-center">料金</Link>
+                                                        <Link href="/qa" className="py-3 hover:underline whitespace-nowrap text-center">Q&A</Link>
                                                     </div>
                                                 )}
                                             </div>
