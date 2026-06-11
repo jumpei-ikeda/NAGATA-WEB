@@ -57,4 +57,9 @@
         }
         .content-wrapper::before {left: 0;}
         .content-wrapper::after {right: 0;}
+        
+        .hero-section::before,
+        .hero-section::after {
+          display: none;
+        }
 }

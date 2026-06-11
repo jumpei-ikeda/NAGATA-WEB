@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 export default function BackgroundSlider() {
     const images = [
@@ -18,23 +17,22 @@ export default function BackgroundSlider() {
     }, []);
 
     return (
-        // ★ absolute をやめる
-        <div className="relative w-full h-full overflow-hidden">
+        <div style={{ position: "relative", width: "100%" }}>
             {images.map((src, i) => (
-                <Image
+                <img
                     key={i}
                     src={src}
                     alt="background"
-                    fill
-                    sizes="60vw"
-                    style={{ objectFit: "contain", objectPosition: "center" }}
-                    className={`
-        transition-opacity
-        duration-1000
-        ease-in-out
-        ${index === i ? "opacity-100" : "opacity-0"}
-    `}
-                    priority
+                    style={{
+                        width: "100%",
+                        height: "auto",
+                        display: "block",
+                        position: i === 0 ? "relative" : "absolute",
+                        top: 0,
+                        left: 0,
+                        opacity: index === i ? 1 : 0,
+                        transition: "opacity 1s ease-in-out",
+                    }}
                 />
             ))}
         </div>
