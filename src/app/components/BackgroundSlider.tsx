@@ -27,7 +27,7 @@ export default function BackgroundSlider() {
                         width: "100%",
                         height: "auto",
                         display: "block",
-                        position: i === 0 ? "relative" : "absolute",
+                        position: index === i ? "relative" : "absolute",
                         top: 0,
                         left: 0,
                         opacity: index === i ? 1 : 0,
