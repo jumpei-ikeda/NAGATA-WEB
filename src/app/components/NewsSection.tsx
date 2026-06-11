@@ -4,7 +4,7 @@ import Link from "next/link";
 async function getNews() {
     const data = await client.getList<News>({
         endpoint: "news",
-        queries: { limit: 5, orders: "-date" },
+        queries: { limit: 10, orders: "-date" },
     });
     return data.contents;
 }
@@ -58,13 +58,22 @@ export default async function NewsSection() {
                                 year: "numeric", month: "2-digit", day: "2-digit"
                             })}
                         </span>
-                        <span style={{
-                            fontSize: "0.9rem",
-                            color: "#1a3028",
-                            lineHeight: 1.7,
-                        }}>
-                            {news.title}
-                        </span>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                            <span style={{
+                                fontSize: "0.9rem",
+                                color: "#1a3028",
+                                lineHeight: 1.7,
+                            }}>
+                                {news.title}
+                            </span>
+                            <span style={{
+                                fontSize: "0.82rem",
+                                color: "#4a7060",
+                                lineHeight: 1.7,
+                            }}
+                                dangerouslySetInnerHTML={{ __html: news.body }}
+                            />
+                        </div>
                     </div>
                 ))}
             </div>
