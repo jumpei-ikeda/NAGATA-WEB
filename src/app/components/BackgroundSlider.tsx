@@ -1,13 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function BackgroundSlider() {
+export default function BackgroundSlider({ onHeightChange }: { onHeightChange?: (h: number) => void }) {
     const images = [
         "/images/bg/外観.jpeg",
         "/images/bg/受付.jpg",
     ];
 
     const [index, setIndex] = useState(0);
+    const [firstHeight, setFirstHeight] = useState<number | null>(null);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -17,17 +18,25 @@ export default function BackgroundSlider() {
     }, []);
 
     return (
-        <div style={{ position: "relative", width: "100%" }}>
+        <div style={{ position: "relative", width: "100%", height: firstHeight ?? "auto" }}>
             {images.map((src, i) => (
                 <img
                     key={i}
                     src={src}
                     alt="background"
+                    onLoad={(e) => {
+                        if (i === 0) {
+                            const h = (e.target as HTMLImageElement).offsetHeight;
+                            setFirstHeight(h);
+                            onHeightChange?.(h);
+                        }
+                    }}
                     style={{
                         width: "100%",
-                        height: "auto",
+                        height: firstHeight ? "100%" : "auto",
+                        objectFit: "cover",
                         display: "block",
-                        position: index === i ? "relative" : "absolute",
+                        position: firstHeight ? "absolute" : (i === 0 ? "relative" : "absolute"),
                         top: 0,
                         left: 0,
                         opacity: index === i ? 1 : 0,
