@@ -1,15 +1,19 @@
 "use client";
+// 先頭のimportに追加
+import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+
 import Image from "next/image";
 import React from "react";
+
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [pressedIndex, setPressedIndex] = useState<number | null>(null);
     const [releasingIndex, setReleasingIndex] = useState<number | null>(null);
     const router = useRouter();
+    const pathname = usePathname();
     const [scrolled, setScrolled] = useState<boolean | null>(null);
     const [headerBottom, setHeaderBottom] = useState<number | null>(null);
     const headerRef = useRef<HTMLElement>(null);
@@ -66,7 +70,7 @@ export default function Header() {
 
     const sections = [
         { title: "診療内容", href: "/services" },
-        { title: "当院について", href: "/about" },
+        { title: "当院・スタッフ", href: "/about" },
         { title: "インプラント", href: "/implant" },
         { title: "アクセス", href: "/access" },
         { title: "お問い合わせ", href: "/contact" },
@@ -118,6 +122,12 @@ export default function Header() {
                     <Link
                         href="/"
                         className="mr-[10px] flex items-center whitespace-nowrap"
+                        onClick={(e) => {
+                            if (pathname === "/") {
+                                e.preventDefault();
+                                window.location.reload();
+                            }
+                        }}
                         style={{
                             marginLeft: "clamp(0px, 1vw, 5px)",
                             gap: "clamp(0px, 20vw, 12px)",
