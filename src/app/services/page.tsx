@@ -134,65 +134,11 @@ export default function ServicesPage() {
                         fontSize: "clamp(2rem, 5vw, 3.4rem)",
                         fontWeight: 300, letterSpacing: "0.04em",
                         color: "#1a3028", lineHeight: 1.2, marginBottom: "20px"
-                    }}>診療内容</h1>
+                    }}>診療案内</h1>
                     <p style={{ fontSize: "0.92rem", color: "#4a6058", lineHeight: 2, maxWidth: "520px" }}>
                         地域の皆さまの健康を守るため、幅広い診療に対応しています。<br />
                         お気軽にご相談ください。
                     </p>
-                </div>
-            </section>
-
-            {/* 診療科目 */}
-            <section style={{ padding: "0 40px 80px", maxWidth: "1100px", margin: "0 auto" }}>
-                <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.1s" }}>
-                    <div style={{
-                        display: "flex", alignItems: "center", gap: "16px",
-                        marginBottom: "32px"
-                    }}>
-                        <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
-                        <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>診療科目</h2>
-                    </div>
-                    <div style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                        gap: "20px"
-                    }}>
-                        {MAIN_SERVICES.map((s, i) => (
-                            <div key={s.title} className="card-service fade-up in" style={{ transitionDelay: `${0.15 + i * 0.07}s` }}>
-                                <div className="tag-circle">{s.icon}</div>
-                                <p style={{ fontSize: "0.72rem", letterSpacing: "0.2em", color: "#4a9a70", marginBottom: "6px" }}>{s.en}</p>
-                                <h3 style={{ fontSize: "1.05rem", fontWeight: 600, marginBottom: "12px", color: "#1a3028" }}>{s.title}</h3>
-                                <p style={{ fontSize: "0.85rem", color: "#5a6e66", lineHeight: 1.9 }}>{s.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* その他 */}
-            <section style={{ padding: "0 40px 80px", maxWidth: "1100px", margin: "0 auto" }}>
-                <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.3s" }}>
-                    <div style={{
-                        display: "flex", alignItems: "center", gap: "16px",
-                        marginBottom: "32px"
-                    }}>
-                        <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
-                        <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>その他</h2>
-                    </div>
-                    <div style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                        gap: "20px"
-                    }}>
-                        {OTHER_SERVICES.map((s, i) => (
-                            <div key={s.title} className="card-service" style={{ transitionDelay: `${0.35 + i * 0.07}s` }}>
-                                <div className="tag-circle">{s.icon}</div>
-                                <p style={{ fontSize: "0.72rem", letterSpacing: "0.2em", color: "#4a9a70", marginBottom: "6px" }}>{s.en}</p>
-                                <h3 style={{ fontSize: "1.05rem", fontWeight: 600, marginBottom: "12px", color: "#1a3028" }}>{s.title}</h3>
-                                <p style={{ fontSize: "0.85rem", color: "#5a6e66", lineHeight: 1.9 }}>{s.desc}</p>
-                            </div>
-                        ))}
-                    </div>
                 </div>
             </section>
 
@@ -251,6 +197,166 @@ export default function ServicesPage() {
                         <p style={{ fontSize: "0.82rem", color: "#7a8e86" }}>※ 日曜・祝日　休診</p>
                         <p style={{ fontSize: "0.82rem", color: "#e07a30" }}>△ 土曜午後は18:00までとなります</p>
                     </div>
+                </div>
+            </section>
+            
+            {/* 診療科目 */}
+            <section style={{ padding: "0 40px 80px", maxWidth: "1100px", margin: "0 auto" }}>
+                <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.1s" }}>
+                    <div style={{
+                        display: "flex", alignItems: "center", gap: "16px",
+                        marginBottom: "32px"
+                    }}>
+                        <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
+                        <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>診療科目</h2>
+                    </div>
+                    <div style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                        gap: "20px"
+                    }}>
+                        {MAIN_SERVICES.map((s, i) => (
+                            <div key={s.title} className="card-service fade-up in" style={{ transitionDelay: `${0.15 + i * 0.07}s` }}>
+                                <div className="tag-circle">{s.icon}</div>
+                                <p style={{ fontSize: "0.72rem", letterSpacing: "0.2em", color: "#4a9a70", marginBottom: "6px" }}>{s.en}</p>
+                                <h3 style={{ fontSize: "1.05rem", fontWeight: 600, marginBottom: "12px", color: "#1a3028" }}>{s.title}</h3>
+                                <p style={{ fontSize: "0.85rem", color: "#5a6e66", lineHeight: 1.9 }}>{s.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* その他 */}
+            <section style={{ padding: "0 40px 80px", maxWidth: "1100px", margin: "0 auto" }}>
+                <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.3s" }}>
+                    <div style={{
+                        display: "flex", alignItems: "center", gap: "16px",
+                        marginBottom: "32px"
+                    }}>
+                        <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
+                        <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>その他</h2>
+                    </div>
+                    <div style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                        gap: "20px"
+                    }}>
+                        {OTHER_SERVICES.map((s, i) => (
+                            <div key={s.title} className="card-service" style={{ transitionDelay: `${0.35 + i * 0.07}s` }}>
+                                <div className="tag-circle">{s.icon}</div>
+                                <p style={{ fontSize: "0.72rem", letterSpacing: "0.2em", color: "#4a9a70", marginBottom: "6px" }}>{s.en}</p>
+                                <h3 style={{ fontSize: "1.05rem", fontWeight: 600, marginBottom: "12px", color: "#1a3028" }}>{s.title}</h3>
+                                <p style={{ fontSize: "0.85rem", color: "#5a6e66", lineHeight: 1.9 }}>{s.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* コンセプト・インプラント */}
+            <section style={{ padding: "0 40px 80px", maxWidth: "1100px", margin: "0 auto" }}>
+                <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.4s" }}>
+
+                    {/* 当院のコンセプト */}
+                    <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
+                        <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
+                        <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>当院のコンセプト</h2>
+                    </div>
+
+                    <div style={{
+                        background: "rgba(255,255,255,0.7)",
+                        backdropFilter: "blur(8px)",
+                        border: "1px solid rgba(255,255,255,0.9)",
+                        borderRadius: "8px",
+                        padding: "36px",
+                        boxShadow: "0 4px 24px rgba(60,120,90,0.07)",
+                        marginBottom: "60px",
+                    }}>
+                        <p style={{ fontSize: "0.92rem", color: "#4a6058", lineHeight: 2, marginBottom: "20px" }}>
+                            当院は、予防処置をベースとした歯科医療を実践しています。歯科医療の予防としては、大きく４つのカテゴリーに分類されます。
+                        </p>
+                        <div style={{
+                            background: "rgba(234,245,240,0.8)",
+                            borderLeft: "4px solid #52b788",
+                            borderRadius: "0 8px 8px 0",
+                            padding: "16px 20px",
+                            marginBottom: "24px",
+                        }}>
+                            {["虫歯の予防", "歯周病の予防", "歯列不正の予防", "咬合崩壊の予防"].map((item, i) => (
+                                <p key={i} style={{ fontSize: "0.9rem", color: "#1a3028", lineHeight: 2 }}>
+                                    <span style={{ color: "#52b788", fontWeight: 600, marginRight: "8px" }}>（{i + 1}）</span>{item}
+                                </p>
+                            ))}
+                        </div>
+
+                        <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "#1a3028", marginBottom: "12px" }}>（１）虫歯の予防</h3>
+                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2, marginBottom: "24px" }}>
+                            当院では、カリオロジー（虫歯の原因菌に対する学問）に基づいたフィンランド型の予防プログラムをおこなっています。サリバァテストを行い個々の患者さんに虫歯を作らない作らせない為のアドバイス及びプログラムを提案し、良質な口腔内環境の改善、維持に努めています。
+                        </p>
+
+                        <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "#1a3028", marginBottom: "12px" }}>（２）歯周病の予防</h3>
+                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2 }}>
+                            ６０歳過ぎた頃より、入れ歯になる方が急速に増えます。入れ歯になる方の９０％以上が歯周病が原因と言われています。歯周病の原因としては、1.喫煙　2.糖尿病　3.ホルモンの関係　4.更年期と骨粗鬆症　などが考えられますが、当院では個々の患者さんに対するリスク診断を行い、積極的に外科処置や歯周再生治療を行なう必要があるのか、それともメインテナンスを中心とした歯周の健康の維持に努めれば良いのか、患者さんとコンサルテーションをしながら、入れ歯にならないよう努めてまいりたいと思っています。
+                        </p>
+                        <div style={{ marginBottom: "24px" }}>
+                            <Link href="/implant" style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: "8px",
+                                fontSize: "0.88rem",
+                                color: "#4a9a70",
+                                textDecoration: "none",
+                                borderBottom: "1px solid #4a9a70",
+                                paddingBottom: "2px",
+                                letterSpacing: "0.08em",
+                            }}>
+                                インプラントについてはこちら →
+                            </Link>
+                        </div>
+                    </div>
+
+                    {/* インプラントについて */}
+                    <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
+                        <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
+                        <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>インプラントについて</h2>
+                    </div>
+                    
+                    <div style={{ marginBottom: "24px" }}>
+                        <Link href="/implant" style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            fontSize: "0.88rem",
+                            color: "#4a9a70",
+                            textDecoration: "none",
+                            borderBottom: "1px solid #4a9a70",
+                            paddingBottom: "2px",
+                            letterSpacing: "0.08em",
+                        }}>
+                            インプラントについてはこちら →
+                        </Link>
+                    </div>
+                    
+                    <div style={{
+                        background: "rgba(255,255,255,0.7)",
+                        backdropFilter: "blur(8px)",
+                        border: "1px solid rgba(255,255,255,0.9)",
+                        borderRadius: "8px",
+                        padding: "36px",
+                        boxShadow: "0 4px 24px rgba(60,120,90,0.07)",
+                    }}>
+                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2, marginBottom: "16px" }}>
+                            当院では、残念ながら入れ歯になってしまった方には、積極的にインプラント治療を行なっています。最近のインプラントのマテリアルは、従来骨質が悪いと言われてる方にも十分対応できるような製品になってきております。
+                        </p>
+                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2, marginBottom: "16px" }}>
+                            また、骨が足りない為にインプラントがやりたくてもできなかった方へのテクニックもカスタマライズされつつありますし、骨造成の為のＰＲＰ（多血小板血漿）の活用も手術の成功に大きく寄与しています。
+                        </p>
+                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2 }}>
+                            インプラントは必ず手術が伴いますので、専用のオペ室を準備してあります。質問はいつでもお受けしますので、遠慮無くご相談下さい。
+                        </p>
+                    </div>
+
                 </div>
             </section>
 

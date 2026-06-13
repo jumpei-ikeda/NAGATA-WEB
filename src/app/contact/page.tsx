@@ -227,13 +227,43 @@ export default function ContactPage() {
                         fontWeight: 300, letterSpacing: "0.04em",
                         color: "#1a3028", lineHeight: 1.2, marginBottom: "20px"
                     }}>お問い合わせ</h1>
-                    <p style={{ fontSize: "0.92rem", color: "#4a6058", lineHeight: 2, maxWidth: "520px" }}>
-                        お名前やメールアドレスは、お問い合わせの返信のみに使用します。<br />
-                        <span style={{ color: "#4a9a70" }}>※</span> は入力必須です。
-                    </p>
+                    
                     <p style={{ fontSize: "0.85rem", color: "#7a8e86", marginTop: "8px" }}>
                         ご予約はお電話にてお受けしております。
                     </p>
+                    <a
+                        href="tel:03-0000-0000"
+                        style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "10px",
+                            marginTop: "16px",
+                            padding: "12px 28px",
+                            background: "rgba(255,255,255,0.8)",
+                            border: "1px solid rgba(74,154,112,0.4)",
+                            borderRadius: "50px",
+                            textDecoration: "none",
+                            color: "#1a3028",
+                            boxShadow: "0 2px 12px rgba(74,154,112,0.1)",
+                            transition: "box-shadow 0.2s ease",
+                        }}>
+
+                        <span style={{ fontSize: "1.1rem" }}>📞</span>
+                        <span style={{
+                            fontFamily: "'Noto Serif JP', serif",
+                            fontSize: "clamp(1.2rem, 3vw, 1.6rem)",
+                            letterSpacing: "0.1em",
+                            color: "#4a9a70",
+                            fontWeight: 600,
+                        }}>
+                            03-6410-8008
+                        </span>
+                    </a>
+                    
+                    <p style={{ fontSize: "0.92rem", color: "#4a6058", lineHeight: 2, maxWidth: "520px" }}>
+                        お名前やメールアドレスは、お問い合わせの返信のみに使用します。<br />
+                        <span style={{ color: "#4a9a70" }}>※</span> は入力必須です。
+                    </p>           
                 </div>
             </section>
 

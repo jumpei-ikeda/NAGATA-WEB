@@ -127,6 +127,51 @@ export default function ImplantPage() {
                 </div>
             </section>
 
+            {/* サブページリンク */}
+            <section style={{ padding: "0 40px 48px", maxWidth: "1100px", margin: "0 auto" }}>
+                <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.05s" }}>
+                    <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+                        {[
+                            { label: "治療の流れ", en: "FLOW", href: "/flow" },
+                            { label: "料金", en: "PRICE", href: "/price" },
+                            { label: "Q&A", en: "Q&A", href: "/qa" },
+                        ].map((item) => (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                style={{
+                                    flex: "1 1 140px",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    gap: "6px",
+                                    padding: "20px 16px",
+                                    background: "rgba(255,255,255,0.7)",
+                                    backdropFilter: "blur(8px)",
+                                    border: "1px solid rgba(74,154,112,0.3)",
+                                    borderRadius: "8px",
+                                    textDecoration: "none",
+                                    boxShadow: "0 4px 16px rgba(60,120,90,0.07)",
+                                    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                                }}
+                                onMouseEnter={e => {
+                                    (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
+                                    (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px rgba(60,120,90,0.13)";
+                                }}
+                                onMouseLeave={e => {
+                                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                                    (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(60,120,90,0.07)";
+                                }}
+                            >
+                                <span style={{ fontSize: "0.68rem", letterSpacing: "0.25em", color: "#4a9a70" }}>{item.en}</span>
+                                <span style={{ fontSize: "1rem", fontWeight: 600, color: "#1a3028" }}>{item.label}</span>
+                                <span style={{ fontSize: "0.75rem", color: "#4a9a70", marginTop: "4px" }}>→</span>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            
             {/* こんな方にお勧め */}
             <section style={{ padding: "0 40px 72px", maxWidth: "1100px", margin: "0 auto" }}>
                 <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.1s" }}>

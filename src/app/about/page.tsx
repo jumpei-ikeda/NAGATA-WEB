@@ -222,7 +222,7 @@ export default function AboutPage() {
                 <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.4s" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "28px" }}>
                         <div className="section-bar" />
-                        <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em" }}>新着情報</h2>
+                        <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em" }}>学会・セミナー情報</h2>
                     </div>
                     <div className="glass-card" style={{ padding: "8px 0" }}>
                         {NEWS.map((n, i) => (

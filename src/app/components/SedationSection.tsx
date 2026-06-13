@@ -5,7 +5,7 @@ export default function SedationSection() {
                 className="text-2xl font-bold text-center mb-6"
                 style={{ color: "#2d6a4f" }}
             >
-                恐怖のない安心治療とは
+                こわくない安心治療とは
             </h2>
 
             <div

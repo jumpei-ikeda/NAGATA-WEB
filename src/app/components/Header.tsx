@@ -69,7 +69,7 @@ export default function Header() {
     }, []);
 
     const sections = [
-        { title: "診療内容", href: "/services" },
+        { title: "診療案内", href: "/services" },
         { title: "当院・スタッフ", href: "/about" },
         { title: "インプラント", href: "/implant" },
         { title: "アクセス", href: "/access" },
@@ -273,18 +273,21 @@ export default function Header() {
                     <button
                         ref={hamburgerRef}
                         className={`
-                            text-3xl md:hidden ml-auto text-gray-800
-                            transition-transform duration-700 ease-in-out
-                            transform-gpu [perspective:800px]
-                            ${menuOpen
+        text-3xl md:hidden ml-auto text-gray-800
+        transition-transform duration-700 ease-in-out
+        transform-gpu [perspective:800px]
+        ${menuOpen
                                 ? "rotateX(18deg) translateZ(-8px) scale-95"
                                 : "rotateX(0deg) translateZ(0) scale-100"
                             }
-                            active:scale-95
-                        `}
+        active:scale-95
+    `}
                         onClick={() => setMenuOpen(!menuOpen)}
                     >
-                        {menuOpen ? "✕" : "☰"}
+                        <div className="flex flex-col items-center">
+                            <span>{menuOpen ? "✕" : "☰"}</span>
+                            <span style={{ fontSize: "0.5rem", letterSpacing: "0.15em", color: "#4a6058" }}>MENU</span>
+                        </div>
                     </button>
 
                    
