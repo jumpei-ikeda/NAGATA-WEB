@@ -250,7 +250,6 @@ export default function ContactPage() {
 
                         <span style={{ fontSize: "1.1rem" }}>📞</span>
                         <span style={{
-                            fontFamily: "'Noto Serif JP', serif",
                             fontSize: "clamp(1.2rem, 3vw, 1.6rem)",
                             letterSpacing: "0.1em",
                             color: "#4a9a70",
