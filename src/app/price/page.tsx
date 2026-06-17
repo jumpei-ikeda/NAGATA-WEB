@@ -13,19 +13,19 @@ const PRICES = [
         title: "インプラント埋入",
         detail: "",
         price: "¥210,000",
-        unit: "1歯",
+        unit: "/1歯",
     },
     {
         title: "2次手術もしくは仮歯装着",
         detail: "",
         price: "¥50,000",
-        unit: "1歯",
+        unit: "/1歯",
     },
     {
         title: "上部構造（かぶせ物）",
         detail: "E-max・メタルボンド・ジルコニア 他",
         price: "¥100,000〜",
-        unit: "1歯",
+        unit: "/1歯",
     },
 ];
 
@@ -34,7 +34,7 @@ const OPTIONS = [
         title: "GBR",
         detail: "骨が薄くインプラントを入れられない方のために骨を作る処置",
         price: "+ ¥60,000",
-        unit: "1歯",
+        unit: "/1歯",
     },
 ];
 
@@ -128,7 +128,7 @@ export default function PricePage() {
                                     )}
                                 </div>
                                 <div style={{ textAlign: "right" }}>
-                                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.3rem", color: "#2d7a5a", letterSpacing: "0.03em" }}>
+                                    <p style={{ fontSize: "1.3rem", color: "#2d7a5a", letterSpacing: "0.03em" }}>
                                         {row.price}
                                     </p>
                                     {row.unit && (
@@ -167,7 +167,7 @@ export default function PricePage() {
                                     <p style={{ fontSize: "0.82rem", color: "#5a7a6a", lineHeight: 1.8 }}>{row.detail}</p>
                                 </div>
                                 <div style={{ textAlign: "right" }}>
-                                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.3rem", color: "#2d7a5a", letterSpacing: "0.03em" }}>
+                                    <p style={{ fontSize: "1.3rem", color: "#2d7a5a", letterSpacing: "0.03em" }}>
                                         {row.price}
                                     </p>
                                     {row.unit && (

@@ -290,6 +290,10 @@ export default function ServicesPage() {
                             ))}
                         </div>
 
+                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2, marginBottom: "24px" }}>
+                            ここでは、特に問題となる（１）と（２）について簡単に記述したいと思います。
+                        </p>
+
                         <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "#1a3028", marginBottom: "12px" }}>（１）虫歯の予防</h3>
                         <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2, marginBottom: "24px" }}>
                             当院では、カリオロジー（虫歯の原因菌に対する学問）に基づいたフィンランド型の予防プログラムをおこなっています。サリバァテストを行い個々の患者さんに虫歯を作らない作らせない為のアドバイス及びプログラムを提案し、良質な口腔内環境の改善、維持に努めています。
@@ -299,6 +303,33 @@ export default function ServicesPage() {
                         <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2 }}>
                             ６０歳過ぎた頃より、入れ歯になる方が急速に増えます。入れ歯になる方の９０％以上が歯周病が原因と言われています。歯周病の原因としては、1.喫煙　2.糖尿病　3.ホルモンの関係　4.更年期と骨粗鬆症　などが考えられますが、当院では個々の患者さんに対するリスク診断を行い、積極的に外科処置や歯周再生治療を行なう必要があるのか、それともメインテナンスを中心とした歯周の健康の維持に努めれば良いのか、患者さんとコンサルテーションをしながら、入れ歯にならないよう努めてまいりたいと思っています。
                         </p>
+                        
+                    </div>
+
+                    {/* インプラントについて */}
+                    <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
+                        <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
+                        <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>インプラントについて</h2>
+                    </div>
+                    
+                    <div style={{
+                        background: "rgba(255,255,255,0.7)",
+                        backdropFilter: "blur(8px)",
+                        border: "1px solid rgba(255,255,255,0.9)",
+                        borderRadius: "8px",
+                        padding: "36px 36px 18px 36px",
+                        boxShadow: "0 4px 24px rgba(60,120,90,0.07)",
+                    }}>
+                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2, marginBottom: "16px" }}>
+                            当院では、残念ながら入れ歯になってしまった方には、積極的にインプラント治療を行なっています。最近のインプラントのマテリアルは、従来骨質が悪いと言われてる方にも十分対応できるような製品になってきております。
+                        </p>
+                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2, marginBottom: "16px" }}>
+                            また、骨が足りない為にインプラントがやりたくてもできなかった方へのテクニックもカスタマライズされつつありますし、骨造成の為のＰＲＰ（多血小板血漿）の活用も手術の成功に大きく寄与しています。
+                        </p>
+                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2 }}>
+                            インプラントは必ず手術が伴いますので、専用のオペ室を準備してあります。質問はいつでもお受けしますので、遠慮無くご相談下さい。
+                        </p>
+                        <br />
                         <div style={{ marginBottom: "24px" }}>
                             <Link href="/implant" style={{
                                 display: "inline-flex",
@@ -315,47 +346,8 @@ export default function ServicesPage() {
                             </Link>
                         </div>
                     </div>
-
-                    {/* インプラントについて */}
-                    <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
-                        <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
-                        <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>インプラントについて</h2>
-                    </div>
                     
-                    <div style={{ marginBottom: "24px" }}>
-                        <Link href="/implant" style={{
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: "8px",
-                            fontSize: "0.88rem",
-                            color: "#4a9a70",
-                            textDecoration: "none",
-                            borderBottom: "1px solid #4a9a70",
-                            paddingBottom: "2px",
-                            letterSpacing: "0.08em",
-                        }}>
-                            インプラントについてはこちら →
-                        </Link>
-                    </div>
                     
-                    <div style={{
-                        background: "rgba(255,255,255,0.7)",
-                        backdropFilter: "blur(8px)",
-                        border: "1px solid rgba(255,255,255,0.9)",
-                        borderRadius: "8px",
-                        padding: "36px",
-                        boxShadow: "0 4px 24px rgba(60,120,90,0.07)",
-                    }}>
-                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2, marginBottom: "16px" }}>
-                            当院では、残念ながら入れ歯になってしまった方には、積極的にインプラント治療を行なっています。最近のインプラントのマテリアルは、従来骨質が悪いと言われてる方にも十分対応できるような製品になってきております。
-                        </p>
-                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2, marginBottom: "16px" }}>
-                            また、骨が足りない為にインプラントがやりたくてもできなかった方へのテクニックもカスタマライズされつつありますし、骨造成の為のＰＲＰ（多血小板血漿）の活用も手術の成功に大きく寄与しています。
-                        </p>
-                        <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2 }}>
-                            インプラントは必ず手術が伴いますので、専用のオペ室を準備してあります。質問はいつでもお受けしますので、遠慮無くご相談下さい。
-                        </p>
-                    </div>
 
                 </div>
             </section>

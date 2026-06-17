@@ -59,11 +59,20 @@ const RECOMMENDED = [
     "入れ歯ではなく、自然な歯並びを取り戻したい方",
 ];
 
+
 export default function ImplantPage() {
     const [visible, setVisible] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         setTimeout(() => setVisible(true), 80);
+    }, []);
+
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth < 640);
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
     }, []);
 
     return (
@@ -123,6 +132,10 @@ export default function ImplantPage() {
                     </h1>
                     <p style={{ fontSize: "0.92rem", color: "#4a6058", lineHeight: 2, maxWidth: "560px" }}>
                         インプラントとは、歯がなくなった箇所の歯根にあたる部分に人工の歯根（フィクスチャー）を埋め込み、その上に人工の歯を被せる治療法です。
+                        <br /><br />
+                        インプラント治療のご相談は無料で承っています。
+                        他院で骨が薄いからといって断られた方もご相談下さい。
+                        (相談時間　30分～1時間)
                     </p>
                 </div>
             </section>
@@ -130,7 +143,7 @@ export default function ImplantPage() {
             {/* サブページリンク */}
             <section style={{ padding: "0 40px 48px", maxWidth: "1100px", margin: "0 auto" }}>
                 <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.05s" }}>
-                    <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+                    <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
                         {[
                             { label: "治療の流れ", en: "FLOW", href: "/flow" },
                             { label: "料金", en: "PRICE", href: "/price" },
@@ -140,38 +153,49 @@ export default function ImplantPage() {
                                 key={item.href}
                                 href={item.href}
                                 style={{
-                                    flex: "1 1 140px",
+                                    flex: "0 0 calc((100% - 32px) / 3)",
+                                    minWidth: "80px",
+                                    maxWidth: "300px",
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "center",
-                                    gap: "6px",
-                                    padding: "20px 16px",
-                                    background: "rgba(255,255,255,0.7)",
-                                    backdropFilter: "blur(8px)",
-                                    border: "1px solid rgba(74,154,112,0.3)",
+                                    padding: "12px 8px 5px",
+                                    background: "rgba(255,255,255,0.15)",
+                                    backdropFilter: "blur(6px)",
+                                    border: "1px solid rgba(74,154,112,0.5)",
                                     borderRadius: "8px",
                                     textDecoration: "none",
                                     boxShadow: "0 4px 16px rgba(60,120,90,0.07)",
-                                    transition: "transform 0.2s ease, box-shadow 0.2s ease",
                                 }}
                                 onMouseEnter={e => {
-                                    (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-                                    (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px rgba(60,120,90,0.13)";
+                                    const inner = e.currentTarget.querySelector(".link-inner") as HTMLElement;
+                                    if (inner) inner.style.transform = "translateY(-3px)";
                                 }}
                                 onMouseLeave={e => {
-                                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                                    (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(60,120,90,0.07)";
+                                    const inner = e.currentTarget.querySelector(".link-inner") as HTMLElement;
+                                    if (inner) inner.style.transform = "translateY(0)";
                                 }}
                             >
-                                <span style={{ fontSize: "0.68rem", letterSpacing: "0.25em", color: "#4a9a70" }}>{item.en}</span>
-                                <span style={{ fontSize: "1rem", fontWeight: 600, color: "#1a3028" }}>{item.label}</span>
-                                <span style={{ fontSize: "0.75rem", color: "#4a9a70", marginTop: "4px" }}>→</span>
+                                <span
+                                    className="link-inner"
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "center",
+                                        gap: "6px",
+                                        transition: "transform 0.2s ease",
+                                    }}
+                                >
+                                    <span style={{ fontSize: "0.68rem", letterSpacing: "0.25em", color: "#4a9a70" }}>{item.en}</span>
+                                    <span style={{ fontSize: "clamp(0.9rem, 2vw, 1rem)", fontWeight: 600, color: "#1a3028" }}>{item.label}</span>
+                                    <span style={{ fontSize: "0.75rem", color: "#4a9a70" }}>→</span>
+                                </span>
                             </Link>
                         ))}
                     </div>
                 </div>
             </section>
-            
+
             {/* こんな方にお勧め */}
             <section style={{ padding: "0 40px 72px", maxWidth: "1100px", margin: "0 auto" }}>
                 <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.1s" }}>
@@ -208,7 +232,12 @@ export default function ImplantPage() {
                         {COMPARISONS.map((c, i) => (
                             <div key={i} className="glass-card" style={{ padding: "28px" }}>
                                 <p style={{ fontSize: "0.78rem", letterSpacing: "0.2em", color: "#4a9a70", marginBottom: "16px" }}>{c.situation}</p>
-                                <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: "16px", alignItems: "center" }}>
+                                <div style={{
+                                    display: "grid",
+                                    gridTemplateColumns: isMobile ? "1fr" : "1fr auto 1fr",
+                                    gap: "16px",
+                                    alignItems: "center",
+                                }}>
                                     {/* 従来 */}
                                     <div style={{ background: "rgba(180,180,180,0.1)", borderRadius: "6px", padding: "16px 20px" }}>
                                         <p style={{ fontSize: "0.75rem", color: "#8a9e96", letterSpacing: "0.1em", marginBottom: "8px" }}>従来の治療法</p>
@@ -216,7 +245,9 @@ export default function ImplantPage() {
                                         <p style={{ fontSize: "0.84rem", color: "#5a6e66", lineHeight: 1.8 }}>{c.conventional.desc}</p>
                                     </div>
                                     {/* 矢印 */}
-                                    <div className="arrow-badge">→</div>
+                                    <div className="arrow-badge" style={{ margin: isMobile ? "0 auto" : undefined }}>
+                                        {isMobile ? "↓" : "→"}
+                                    </div>
                                     {/* インプラント */}
                                     <div style={{ background: "rgba(45,122,90,0.07)", borderRadius: "6px", padding: "16px 20px", borderLeft: "3px solid #4a9a70" }}>
                                         <p style={{ fontSize: "0.75rem", color: "#4a9a70", letterSpacing: "0.1em", marginBottom: "8px" }}>インプラント</p>

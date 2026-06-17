@@ -16,9 +16,8 @@ export default async function NewsSection() {
 
     return (
         <section style={{
-            padding: "60px 40px",
-            maxWidth: "1100px",
-            margin: "0 auto",
+            padding: "3px 10px",
+            width: "100%",
         }}>
             {/* 見出し */}
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>

@@ -84,6 +84,9 @@ export default function AboutPage() {
           width: 10px; height: 10px; border-radius: 50%;
           background: #4a9a70; flex-shrink: 0; margin-top: 6px;
         }
+          #director {
+            scroll-margin-top: var(--header-height);
+                    }
       `}</style>
 
             {/* ヒーロー */}
@@ -134,7 +137,7 @@ export default function AboutPage() {
             </section>
 
             {/* 院長紹介 */}
-            <section style={{ padding: "0 40px 72px", maxWidth: "1100px", margin: "0 auto" }}>
+            <section id="director" style={{ padding: "0 40px 72px", maxWidth: "1100px", margin: "0 auto" }}>
                 <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.2s" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "28px" }}>
                         <div className="section-bar" />

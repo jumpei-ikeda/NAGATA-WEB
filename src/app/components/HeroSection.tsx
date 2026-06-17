@@ -42,7 +42,7 @@ export default function HeroSection() {
                 >
                     <p style={{
                         fontFamily: "'Cormorant Garamond', serif",
-                        fontSize: `calc(clamp(0.65rem, 1vw, 0.85rem) * ${heightScale})`,
+                        fontSize: `calc(clamp(0.85rem, 1vw, 0.85rem) * ${heightScale})`,
                         letterSpacing: "0.35em",
                         color: "#8dd4b0",
                         marginBottom: `calc(clamp(6px, 1vw, 12px) * ${heightScale})`,
@@ -51,7 +51,7 @@ export default function HeroSection() {
                     </p>
                     <h1 style={{
                         fontFamily: "'Noto Serif JP', serif",
-                        fontSize: `calc(clamp(1.6rem, 4vw, 3.2rem) * ${heightScale})`,
+                        fontSize: `calc(clamp(1.9rem, 4vw, 3.2rem) * ${heightScale})`,
                         fontWeight: 400,
                         letterSpacing: "0.08em",
                         lineHeight: 1.6,
