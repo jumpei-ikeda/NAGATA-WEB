@@ -18,8 +18,10 @@ export default function Header() {
     const [headerBottom, setHeaderBottom] = useState<number | null>(null);
     const headerRef = useRef<HTMLElement>(null);
     const [implantHover, setImplantHover] = useState(false);
+    const [implantClosing, setImplantClosing] = useState(false);
     const [implantLeft, setImplantLeft] = useState(0);
     const implantRef = useRef<HTMLDivElement>(null);
+    const implantLeaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null); 
     const hamburgerRef = useRef<HTMLButtonElement>(null);
     const menuRef = useRef<HTMLElement>(null);
     const [implantBottom, setImplantBottom] = useState(0);
@@ -209,8 +211,18 @@ export default function Header() {
                                             <div
                                                 ref={implantRef}
                                                 className="relative"
-                                                onMouseEnter={() => setImplantHover(true)}
-                                                onMouseLeave={() => setImplantHover(false)}
+                                                onMouseEnter={() => {
+                                                    if (implantLeaveTimer.current) clearTimeout(implantLeaveTimer.current);
+                                                    setImplantClosing(false);
+                                                    setImplantHover(true);
+                                                }}
+                                                onMouseLeave={() => {
+                                                    setImplantClosing(true);
+                                                    implantLeaveTimer.current = setTimeout(() => {
+                                                        setImplantHover(false);
+                                                        setImplantClosing(false);
+                                                    }, 250);
+                                                }}
                                                 style={{
                                                     borderRadius: implantHover ? "8px 8px 0 0" : "8px",
                                                     background: implantHover ? "#deffebb9" : "transparent",
@@ -225,17 +237,19 @@ export default function Header() {
                                                 >
                                                     {sec.title}
                                                 </Link>
-                                                {implantHover && (
+                                                {(implantHover || implantClosing) && (
                                                     <div
                                                         className="absolute flex flex-col"
                                                         style={{
-                                                            top: "105%",
+                                                            top: "103%",
                                                             left: "clamp(-40px, -2vw, -5px)",
                                                             right: "clamp(-40px, -2vw, -5px)",
-                                                            background: "linear-gradient(to bottom, #d9ffe800 0%, #deffeb 15%)",
+                                                            background: "linear-gradient(to bottom, #d9ffe874 0%, #deffebf6 10%)",
                                                             borderRadius: "0 0 8px 8px",
                                                             fontSize: "clamp(10px, 1.5vw, 14px)",
-                                                            animation: "slideDown 0.25s ease forwards",
+                                                            animation: implantClosing
+                                                                ? "slideUp 0.25s ease forwards"
+                                                                : "slideDown 0.25s ease forwards",
                                                             transformOrigin: "top",
                                                             paddingBottom: "4px",
                                                             borderLeft: "1px solid rgba(100,150,120,0.4)",
@@ -244,7 +258,9 @@ export default function Header() {
                                                         }}
                                                     >
                                                         <Link href="/flow" className="py-3 hover:underline whitespace-nowrap text-center">治療の流れ</Link>
+                                                        <div style={{ height: "1px", background: "rgba(100,150,120,0.3)", margin: "0 30px" }} />
                                                         <Link href="/price" className="py-3 hover:underline whitespace-nowrap text-center">料金</Link>
+                                                        <div style={{ height: "1px", background: "rgba(100,150,120,0.3)", margin: "0 30px" }} />
                                                         <Link href="/qa" className="py-3 hover:underline whitespace-nowrap text-center">Q&A</Link>
                                                     </div>
                                                 )}
