@@ -69,7 +69,7 @@ export default function FlowPage() {
                     <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 5vw, 3.4rem)", fontWeight: 300, letterSpacing: "0.04em", lineHeight: 1.2, marginBottom: "20px" }}>
                         インプラント治療の流れ
                     </h1>
-                    <p style={{ fontSize: "0.92rem", color: "#4a6058", lineHeight: 2, maxWidth: "520px" }}>
+                    <p style={{ fontSize: "0.92rem", color: "#4a6058", lineHeight: 2, maxWidth: "620px" }}>
                         初めての方も安心して受けていただけるよう、丁寧にご説明しながら進めます。
                     </p>
                 </div>

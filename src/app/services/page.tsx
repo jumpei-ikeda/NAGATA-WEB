@@ -62,6 +62,80 @@ const HOURS = [
     },
 ];
 
+const CASES = [
+    {
+        title: "乳歯の反対咬合の矯正例",
+        period: { label: "矯正期間", value: "約2年" },
+        costs: [
+            { label: "検査料", value: "4万円" },
+            { label: "矯正装置", value: "7万円" },
+            { label: "月1回のチェック料", value: "1,000〜3,000円" },
+        ],
+        total: "約13万円",
+    },
+    {
+        title: "上の永久歯のでこぼこの歯並びの矯正例",
+        period: { label: "矯正期間", value: "約1年半" },
+        costs: [
+            { label: "検査料", value: "4万円" },
+            { label: "矯正装置", value: "20万円" },
+            { label: "月1回のチェック料", value: "2,000〜3,000円" },
+            { label: "保定装置", value: "3万円" },
+        ],
+        total: "約31万円",
+    },
+    {
+        title: "上下の永久歯のでこぼこの歯並びの矯正例",
+        period: { label: "矯正期間", value: "約2年半" },
+        costs: [
+            { label: "検査料", value: "4万円" },
+            { label: "矯正装置", value: "45万円" },
+            { label: "月1回のチェック料", value: "3,000円" },
+            { label: "保定装置", value: "6万円" },
+        ],
+        total: "約55万円",
+    },
+    {
+        title: "矯正装置に目立たないセラミックを使用した例",
+        period: { label: "矯正期間", value: "約3年" },
+        costs: [
+            { label: "検査料", value: "4万円" },
+            { label: "矯正装置", value: "55万円" },
+            { label: "月1回のチェック料", value: "3,000円" },
+            { label: "保定装置", value: "6万円" },
+        ],
+        total: "約65万円",
+    },
+    {
+        title: "奥歯が3歯ないインプラントの例",
+        period: { label: "治療期間", value: "約7ヶ月" },
+        costs: [
+            { label: "インプラント代（手術料込み）", value: "20万円 × 3本" },
+            { label: "かぶせ物", value: "10万円 × 3歯" },
+        ],
+        total: "90万円（消費税込み）",
+    },
+    {
+        title: "前歯が1歯ない骨の薄いインプラントの例",
+        period: { label: "治療期間", value: "約8ヶ月" },
+        costs: [
+            { label: "インプラント代（手術料込み）", value: "20万円" },
+            { label: "骨造成", value: "5万円" },
+            { label: "かぶせ物", value: "10万円" },
+        ],
+        total: "35万円（消費税込み）",
+    },
+    {
+        title: "上顎の鼻下の骨が出ており出っ歯になり、前歯の歯肉ラインも合っていない審美歯科の例",
+        period: { label: "治療期間", value: "約4ヶ月" },
+        costs: [
+            { label: "手術料", value: "2万円" },
+            { label: "かぶせ物", value: "32万円" },
+        ],
+        total: "約34万円",
+    },
+];
+
 export default function ServicesPage() {
     const [visible, setVisible] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -199,7 +273,7 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
-            
+
             {/* 診療科目 */}
             <section style={{ padding: "0 40px 80px", maxWidth: "1100px", margin: "0 auto" }}>
                 <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.1s" }}>
@@ -303,7 +377,6 @@ export default function ServicesPage() {
                         <p style={{ fontSize: "0.88rem", color: "#4a6058", lineHeight: 2 }}>
                             ６０歳過ぎた頃より、入れ歯になる方が急速に増えます。入れ歯になる方の９０％以上が歯周病が原因と言われています。歯周病の原因としては、1.喫煙　2.糖尿病　3.ホルモンの関係　4.更年期と骨粗鬆症　などが考えられますが、当院では個々の患者さんに対するリスク診断を行い、積極的に外科処置や歯周再生治療を行なう必要があるのか、それともメインテナンスを中心とした歯周の健康の維持に努めれば良いのか、患者さんとコンサルテーションをしながら、入れ歯にならないよう努めてまいりたいと思っています。
                         </p>
-                        
                     </div>
 
                     {/* インプラントについて */}
@@ -311,7 +384,7 @@ export default function ServicesPage() {
                         <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
                         <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>インプラントについて</h2>
                     </div>
-                    
+
                     <div style={{
                         background: "rgba(255,255,255,0.7)",
                         backdropFilter: "blur(8px)",
@@ -346,9 +419,82 @@ export default function ServicesPage() {
                             </Link>
                         </div>
                     </div>
-                    
-                    
+                </div>
+            </section>
 
+            {/* 当院の症例 */}
+            <section style={{ padding: "0 40px 80px", maxWidth: "1100px", margin: "0 auto" }}>
+                <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.5s" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
+                        <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
+                        <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>当院の症例</h2>
+                    </div>
+
+                    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                        {CASES.map((c, i) => (
+                            <div key={i} style={{
+                                background: "rgba(255,255,255,0.7)",
+                                backdropFilter: "blur(8px)",
+                                border: "1px solid rgba(255,255,255,0.9)",
+                                borderRadius: "8px",
+                                overflow: "hidden",
+                                boxShadow: "0 4px 24px rgba(60,120,90,0.07)",
+                            }}>
+                                {/* タイトル行 */}
+                                <div style={{
+                                    padding: "14px 24px",
+                                    background: "linear-gradient(90deg, rgba(74,154,112,0.12), rgba(74,154,112,0.04))",
+                                    borderBottom: "1px solid rgba(74,154,112,0.15)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "10px",
+                                }}>
+                                    <span style={{ color: "#4a9a70", fontSize: "0.9rem" }}>○</span>
+                                    <h3 style={{ fontSize: "0.95rem", fontWeight: 600, color: "#1a3028" }}>{c.title}</h3>
+                                </div>
+
+                                <div style={{ padding: "20px 24px", display: "flex", flexDirection: "column", gap: "8px" }}>
+                                    {/* 期間 */}
+                                    <div style={{ display: "flex", gap: "16px", alignItems: "baseline", marginBottom: "4px" }}>
+                                        <span style={{ fontSize: "0.78rem", color: "#7a8e86", letterSpacing: "0.08em", minWidth: "60px" }}>{c.period.label}</span>
+                                        <span style={{ fontSize: "0.92rem", color: "#2d7a5a", fontWeight: 600 }}>{c.period.value}</span>
+                                    </div>
+
+                                    {/* 費用明細 */}
+                                    <div style={{
+                                        background: "rgba(240,250,245,0.6)",
+                                        borderRadius: "6px",
+                                        padding: "12px 16px",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        gap: "6px",
+                                    }}>
+                                        <span style={{ fontSize: "0.72rem", letterSpacing: "0.15em", color: "#4a9a70", marginBottom: "4px" }}>費用内訳</span>
+                                        {c.costs.map((cost, j) => (
+                                            <div key={j} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "16px" }}>
+                                                <span style={{ fontSize: "0.84rem", color: "#5a6e66" }}>{cost.label}</span>
+                                                <span style={{ fontSize: "0.84rem", color: "#3a5a4a", whiteSpace: "nowrap" }}>{cost.value}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* 合計 */}
+                                    <div style={{
+                                        display: "flex",
+                                        justifyContent: "flex-end",
+                                        alignItems: "baseline",
+                                        gap: "12px",
+                                        paddingTop: "8px",
+                                        borderTop: "1px solid rgba(74,154,112,0.15)",
+                                        marginTop: "4px",
+                                    }}>
+                                        <span style={{ fontSize: "0.78rem", color: "#7a8e86", letterSpacing: "0.1em" }}>合計</span>
+                                        <span style={{ fontSize: "1.05rem", fontWeight: 600, color: "#2d7a5a" }}>{c.total}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 

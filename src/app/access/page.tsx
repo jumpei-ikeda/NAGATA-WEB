@@ -63,6 +63,24 @@ export default function AccessPage() {
           min-width: 80px;
           padding-top: 3px;
         }
+        .access-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
+          align-items: start;
+        }
+        /* モバイルでは縦並び、マップが下 */
+        @media (max-width: 700px) {
+          .access-grid {
+            grid-template-columns: 1fr;
+          }
+          .access-map {
+            order: 2;
+          }
+          .access-info {
+            order: 1;
+          }
+        }
       `}</style>
 
             {/* ヒーロー */}
@@ -82,45 +100,11 @@ export default function AccessPage() {
             {/* 地図 + 情報 */}
             <section style={{ padding: "0 40px 80px", maxWidth: "1100px", margin: "0 auto" }}>
                 <div
-                    className={`fade-up ${visible ? "in" : ""}`}
-                    style={{
-                        transitionDelay: "0.1s",
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1fr",
-                        gap: "32px",
-                        alignItems: "start",
-                    }}
+                    className={`fade-up access-grid ${visible ? "in" : ""}`}
+                    style={{ transitionDelay: "0.1s" }}
                 >
-                    {/* 地図 */}
-                    <div className="glass-card" style={{ overflow: "hidden" }}>
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3245.386436887399!2d139.7266424!3d35.5688526!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60186053cb0f1f3d%3A0x968bf7a183f3eb67!2z5rC455Sw5q2v56eR5Yy76Zmi!5e0!3m2!1sja!2sjp!4v1778672532128!5m2!1sja!2sjp"
-                            width="100%"
-                            height="360"
-                            style={{ border: 0, display: "block" }}
-                            allowFullScreen
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            title="永田歯科医院 地図"
-                        />
-                        <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
-                            <a
-                                href="https://maps.app.goo.gl/u4ohMiy1UDkPB31W8"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{
-                                    display: "inline-flex", alignItems: "center", gap: "6px",
-                                    fontSize: "0.82rem", color: "#4a9a70", textDecoration: "none",
-                                    borderBottom: "1px solid #4a9a70", paddingBottom: "1px"
-                                }}
-                            >
-                                Google マップで開く →
-                            </a>
-                        </div>
-                    </div>
-
-                    {/* 情報 */}
-                    <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+                    {/* 情報（左） */}
+                    <div className="access-info" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
                         {/* 住所・連絡先 */}
                         <div className="glass-card" style={{ padding: "28px 32px" }}>
                             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "20px" }}>
@@ -141,7 +125,7 @@ export default function AccessPage() {
                             </div>
                             <div className="info-row">
                                 <span className="info-label">TEL</span>
-                                <a href="tel:0364108008" style={{ color: "#2d7a5a", textDecoration: "none", fontFamily: "'Cormorant Garamond', serif", fontSize: "1.1rem", letterSpacing: "0.05em" }}>
+                                <a href="tel:0364108008" style={{ color: "#2d7a5a", textDecoration: "none", fontSize: "1.1rem", letterSpacing: "0.05em" }}>
                                     03-6410-8008
                                 </a>
                             </div>
@@ -166,6 +150,34 @@ export default function AccessPage() {
                                     品川駅・川崎駅・羽田空港駅から約15分
                                 </span>
                             </div>
+                        </div>
+                    </div>
+
+                    {/* 地図（右） */}
+                    <div className="access-map glass-card" style={{ overflow: "hidden" }}>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3245.386436887399!2d139.7266424!3d35.5688526!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60186053cb0f1f3d%3A0x968bf7a183f3eb67!2z5rC455Sw5q2v56eR5Yy76Zmi!5e0!3m2!1sja!2sjp!4v1778672532128!5m2!1sja!2sjp"
+                            width="100%"
+                            height="360"
+                            style={{ border: 0, display: "block" }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="永田歯科医院 地図"
+                        />
+                        <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+                            <a
+                                href="https://maps.app.goo.gl/u4ohMiy1UDkPB31W8"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    display: "inline-flex", alignItems: "center", gap: "6px",
+                                    fontSize: "0.82rem", color: "#4a9a70", textDecoration: "none",
+                                    borderBottom: "1px solid #4a9a70", paddingBottom: "1px"
+                                }}
+                            >
+                                Google マップで開く →
+                            </a>
                         </div>
                     </div>
                 </div>

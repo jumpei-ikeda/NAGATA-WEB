@@ -36,7 +36,6 @@ export default function ContactPage() {
     };
 
     const handleSubmit = async () => {
-        // 必須チェック
         if (!form.name || !form.kana || !form.age || !form.gender || !form.email || !form.message) {
             alert("※印の項目をすべて入力してください。");
             return;
@@ -59,6 +58,12 @@ export default function ContactPage() {
             setStatus("error");
         }
     };
+
+    const externalLinks = [
+        { label: "インプラント ネット", url: "https://www.implant.ac/" },
+        { label: "松戸市　二ツ木歯科医院", url: "http://www.fu-dc.com/" },
+        { label: "池袋　ナチュラルスマイルDC", url: "http://www.natural-smile.jp/" },
+    ];
 
     return (
         <main
@@ -211,6 +216,33 @@ export default function ContactPage() {
                     cursor: not-allowed;
                     transform: none;
                 }
+                .bottom-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 24px;
+                    align-items: start;
+                }
+                @media (max-width: 700px) {
+                    .bottom-grid {
+                        grid-template-columns: 1fr;
+                    }
+                }
+                .section-heading {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    margin-bottom: 24px;
+                }
+                .info-card {
+                    background: rgba(255,255,255,0.7);
+                    backdrop-filter: blur(8px);
+                    border: 1px solid rgba(255,255,255,0.9);
+                    border-radius: 8px;
+                    padding: 28px 28px;
+                    box-shadow: 0 4px 24px rgba(60,120,90,0.07);
+                    height: 100%;
+                    box-sizing: border-box;
+                }
             `}</style>
 
             {/* ヒーロー */}
@@ -227,12 +259,12 @@ export default function ContactPage() {
                         fontWeight: 300, letterSpacing: "0.04em",
                         color: "#1a3028", lineHeight: 1.2, marginBottom: "20px"
                     }}>お問い合わせ</h1>
-                    
+
                     <p style={{ fontSize: "0.85rem", color: "#7a8e86", marginTop: "8px" }}>
                         ご予約はお電話にてお受けしております。
                     </p>
                     <a
-                        href="tel:03-0000-0000"
+                        href="tel:03-6410-8008"
                         style={{
                             display: "inline-flex",
                             alignItems: "center",
@@ -247,7 +279,6 @@ export default function ContactPage() {
                             boxShadow: "0 2px 12px rgba(74,154,112,0.1)",
                             transition: "box-shadow 0.2s ease",
                         }}>
-
                         <span style={{ fontSize: "1.1rem" }}>📞</span>
                         <span style={{
                             fontSize: "clamp(1.2rem, 3vw, 1.6rem)",
@@ -261,15 +292,13 @@ export default function ContactPage() {
                     <p style={{ fontSize: "0.92rem", color: "#4a6058", lineHeight: 2, maxWidth: "520px", marginTop: "60px" }}>
                         お名前やメールアドレスは、お問い合わせの返信のみに使用します。<br />
                         <span style={{ color: "#4a9a70" }}>※</span> は入力必須です。
-                    </p>           
+                    </p>
                 </div>
             </section>
 
             {/* フォーム */}
-            <section style={{ padding: "0 40px 100px", maxWidth: "860px", margin: "0 auto" }}>
+            <section style={{ padding: "0 40px 80px", maxWidth: "860px", margin: "0 auto" }}>
                 <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.1s" }}>
-
-                    {/* セクション見出し */}
                     <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
                         <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
                         <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>お問い合わせフォーム</h2>
@@ -283,129 +312,53 @@ export default function ContactPage() {
                         padding: "0 36px 8px",
                         boxShadow: "0 4px 24px rgba(60,120,90,0.07)"
                     }}>
-                        {/* お名前 */}
                         <div className="form-row">
                             <div className="form-label"><span className="required-mark">※</span>お名前</div>
-                            <input
-                                className="form-input"
-                                type="text"
-                                name="name"
-                                value={form.name}
-                                onChange={handleChange}
-                                placeholder="例）永田 太郎"
-                            />
+                            <input className="form-input" type="text" name="name" value={form.name} onChange={handleChange} placeholder="例）永田 太郎" />
                         </div>
-
-                        {/* フリガナ */}
                         <div className="form-row">
                             <div className="form-label"><span className="required-mark">※</span>フリガナ</div>
-                            <input
-                                className="form-input"
-                                type="text"
-                                name="kana"
-                                value={form.kana}
-                                onChange={handleChange}
-                                placeholder="例）ナガタ タロウ"
-                            />
+                            <input className="form-input" type="text" name="kana" value={form.kana} onChange={handleChange} placeholder="例）ナガタ タロウ" />
                         </div>
-
-                        {/* 年齢 */}
                         <div className="form-row">
                             <div className="form-label"><span className="required-mark">※</span>年齢</div>
                             <div className="age-wrap">
-                                <input
-                                    className="age-input"
-                                    type="number"
-                                    name="age"
-                                    value={form.age}
-                                    onChange={handleChange}
-                                    placeholder="30"
-                                    min="0"
-                                    max="120"
-                                />
+                                <input className="age-input" type="number" name="age" value={form.age} onChange={handleChange} placeholder="30" min="0" max="120" />
                                 <span style={{ fontSize: "0.9rem", color: "#4a6058" }}>歳</span>
                             </div>
                         </div>
-
-                        {/* 性別 */}
                         <div className="form-row">
                             <div className="form-label"><span className="required-mark">※</span>性別</div>
                             <div className="radio-group">
                                 <label className="radio-label">
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="男"
-                                        checked={form.gender === "男"}
-                                        onChange={handleChange}
-                                    />
-                                    男
+                                    <input type="radio" name="gender" value="男" checked={form.gender === "男"} onChange={handleChange} />男
                                 </label>
                                 <label className="radio-label">
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="女"
-                                        checked={form.gender === "女"}
-                                        onChange={handleChange}
-                                    />
-                                    女
+                                    <input type="radio" name="gender" value="女" checked={form.gender === "女"} onChange={handleChange} />女
                                 </label>
                             </div>
                         </div>
-
-                        {/* メールアドレス */}
                         <div className="form-row">
                             <div className="form-label">
                                 <span className="required-mark">※</span>メールアドレス
                                 <div style={{ fontSize: "0.75rem", color: "#7a8e86", marginTop: "4px" }}>半角文字で正しく入力してください</div>
                             </div>
-                            <input
-                                className="form-input"
-                                type="email"
-                                name="email"
-                                value={form.email}
-                                onChange={handleChange}
-                                placeholder="example@email.com"
-                            />
+                            <input className="form-input" type="email" name="email" value={form.email} onChange={handleChange} placeholder="example@email.com" />
                         </div>
-
-                        {/* 電話番号 */}
                         <div className="form-row">
                             <div className="form-label">電話番号</div>
-                            <input
-                                className="form-input"
-                                type="tel"
-                                name="phone"
-                                value={form.phone}
-                                onChange={handleChange}
-                                placeholder="03-0000-0000"
-                            />
+                            <input className="form-input" type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="03-0000-0000" />
                         </div>
-
-                        {/* お問い合わせ内容 */}
                         <div className="form-row" style={{ borderBottom: "none" }}>
                             <div className="form-label"><span className="required-mark">※</span>お問い合わせ内容</div>
-                            <textarea
-                                className="form-textarea"
-                                name="message"
-                                value={form.message}
-                                onChange={handleChange}
-                                placeholder="お問い合わせ内容をご記入ください"
-                            />
+                            <textarea className="form-textarea" name="message" value={form.message} onChange={handleChange} placeholder="お問い合わせ内容をご記入ください" />
                         </div>
                     </div>
 
-                    {/* 送信ボタン */}
-                    <button
-                        className="submit-btn"
-                        onClick={handleSubmit}
-                        disabled={status === "sending"}
-                    >
+                    <button className="submit-btn" onClick={handleSubmit} disabled={status === "sending"}>
                         {status === "sending" ? "送信中..." : "送　信"}
                     </button>
 
-                    {/* 送信結果 */}
                     {status === "success" && (
                         <p style={{ textAlign: "center", marginTop: "24px", color: "#4a9a70", fontSize: "0.95rem" }}>
                             お問い合わせを受け付けました。折り返しご連絡いたします。
@@ -416,6 +369,86 @@ export default function ContactPage() {
                             送信に失敗しました。しばらく経ってから再度お試しください。
                         </p>
                     )}
+                </div>
+            </section>
+
+            {/* 歯科医師の方へ ＋ 他リンク（横並び） */}
+            <section style={{ padding: "0 40px 80px", maxWidth: "860px", margin: "0 auto" }}>
+                <div className={`fade-up ${visible ? "in" : ""}`} style={{ transitionDelay: "0.2s" }}>
+                    <div className="bottom-grid">
+
+                        {/* 歯科医師の方へ */}
+                        <div>
+                            <div className="section-heading">
+                                <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
+                                <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>歯科医師の方へ</h2>
+                            </div>
+                            <div className="info-card">
+                                <p style={{ fontSize: "0.9rem", lineHeight: 2, color: "#1a3028", marginBottom: "20px" }}>
+                                    難症例・困った症例をお持ちの先生は、お気軽にご相談ください。
+                                </p>
+                                <div style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: "10px",
+                                    padding: "10px 16px",
+                                    background: "rgba(234,245,240,0.8)",
+                                    border: "1px solid rgba(74,154,112,0.25)",
+                                    borderRadius: "6px",
+                                }}>
+                                    <span style={{ fontSize: "1rem" }}>✉</span>
+                                    <a
+                                        href="mailto:info@dental-nagata.com"
+                                        style={{
+                                            fontSize: "0.88rem",
+                                            color: "#4a9a70",
+                                            textDecoration: "none",
+                                            borderBottom: "1px solid rgba(74,154,112,0.4)",
+                                            paddingBottom: "1px",
+                                            letterSpacing: "0.03em",
+                                        }}
+                                    >
+                                        info@dental-nagata.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 他リンク */}
+                        <div>
+                            <div className="section-heading">
+                                <div style={{ width: "3px", height: "28px", background: "linear-gradient(#4a9a70, #8dd4b0)", borderRadius: "2px" }} />
+                                <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>他リンク</h2>
+                            </div>
+                            <div className="info-card">
+                                <ul style={{ display: "flex", flexDirection: "column", gap: "16px", margin: 0, padding: 0 }}>
+                                    {externalLinks.map((link) => (
+                                        <li key={link.url} style={{ listStyle: "none" }}>
+                                            <a
+                                                href={link.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                style={{
+                                                    display: "inline-flex",
+                                                    alignItems: "center",
+                                                    gap: "8px",
+                                                    fontSize: "0.9rem",
+                                                    color: "#4a9a70",
+                                                    textDecoration: "none",
+                                                    borderBottom: "1px solid rgba(74,154,112,0.4)",
+                                                    paddingBottom: "2px",
+                                                }}
+                                            >
+                                                <span style={{ fontSize: "0.65rem", color: "#52b788" }}>▶</span>
+                                                {link.label}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </section>
 

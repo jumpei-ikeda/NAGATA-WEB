@@ -130,7 +130,7 @@ export default function ImplantPage() {
                     <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 5vw, 3.4rem)", fontWeight: 300, letterSpacing: "0.04em", lineHeight: 1.2, marginBottom: "20px" }}>
                         インプラント治療
                     </h1>
-                    <p style={{ fontSize: "0.92rem", color: "#4a6058", lineHeight: 2, maxWidth: "560px" }}>
+                    <p style={{ fontSize: "0.92rem", color: "#4a6058", lineHeight: 2, maxWidth: "633px" }}>
                         インプラントとは、歯がなくなった箇所の歯根にあたる部分に人工の歯根（フィクスチャー）を埋め込み、その上に人工の歯を被せる治療法です。
                         <br /><br />
                         インプラント治療のご相談は無料で承っています。
