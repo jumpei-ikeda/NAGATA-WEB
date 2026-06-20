@@ -22,6 +22,16 @@
   }
 }
 
+@keyframes slideUp {
+  from {
+    clip-path: inset(0 0 0% 0);
+  }
+
+  to {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
 @layer base {
 
   /* スマホでは余白なし */
@@ -30,12 +40,13 @@
     --footer-height: clamp(60px, 10vw, 70px);
     --side-gap: 0px;
   }
-    html,
-    body {
-  
-      background-color: #ffffff;
-  
-    }
+
+  html,
+  body {
+
+    background-color: #ffffff;
+
+  }
 
   /* md以上で出す */
   @media (min-width: 768px) {
@@ -44,22 +55,28 @@
     }
   }
 
-        .content-wrapper::before,
-        .content-wrapper::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          width: var(--side-gap);
-          pointer-events: none;
-          z-index: 10;
-          background: #ffffff;
-        }
-        .content-wrapper::before {left: 0;}
-        .content-wrapper::after {right: 0;}
-        
-        .hero-section::before,
-        .hero-section::after {
-          display: none;
-        }
+  .content-wrapper::before,
+  .content-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: var(--side-gap);
+    pointer-events: none;
+    z-index: 10;
+    background: #ffffff;
+  }
+
+  .content-wrapper::before {
+    left: 0;
+  }
+
+  .content-wrapper::after {
+    right: 0;
+  }
+
+  .hero-section::before,
+  .hero-section::after {
+    display: none;
+  }
 }
