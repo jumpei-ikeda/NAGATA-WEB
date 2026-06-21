@@ -79,15 +79,17 @@ export default function Header() {
     ];
 
     const linkBase = `
-        relative inline-block py-1 transform-gpu
-        before:content-[''] before:absolute before:left-0 before:top-full
-        before:w-full before:h-4 before:pointer-events-auto
-        after:content-[''] after:absolute after:left-0 after:-bottom-[2px]
-        after:w-full after:h-[1px] after:bg-current
-        after:scale-x-0 after:origin-center
-        after:transition-transform after:duration-300
-        hover:after:scale-x-100
-    `;
+    relative inline-block py-1 transform-gpu
+    before:content-[''] before:absolute before:left-0 before:top-full
+    before:w-full before:h-4 before:pointer-events-auto
+    after:content-[''] after:absolute after:left-0 after:-bottom-[2px]
+    after:w-full after:h-[1px] after:bg-current
+    after:scale-x-0 after:origin-center
+    after:transition-transform after:duration-300
+    hover:after:scale-x-100
+    transition-transform duration-200
+    hover:-translate-y-[2px]
+`;
 
     const pressedClass = (i: number) =>
         pressedIndex === i
@@ -188,10 +190,10 @@ export default function Header() {
                         <nav
                             className="flex items-center whitespace-nowrap"
                             style={{
-                                gap: "clamp(0px, 2.5vw, 80px)",
-                                fontSize: "clamp(10px, 1.5vw, 14px)",
+                                gap: "clamp(0px, 3vw, 80px)",
+                                fontSize: "clamp(10px, 1.5vw, 14.5px)",
                                 borderRadius: "8px",
-                                padding: "4px 12px"
+                                padding: "4px 8px"
                             }}
                         >
                             {sections.map((sec, i) => {
@@ -224,12 +226,36 @@ export default function Header() {
                                                     }, 250);
                                                 }}
                                                 style={{
-                                                    borderRadius: implantHover ? "8px 8px 0 0" : "8px",
-                                                    background: implantHover ? "#deffebb9" : "transparent",
+                                                    borderRadius: (implantHover || implantClosing) ? "8px 8px 0 0" : "8px",
+                                                    background: (implantHover || implantClosing)
+                                                        ? "linear-gradient(to bottom, transparent 0%, #deffeba8 100%)"
+                                                        : "transparent",
                                                     transition: "background 0.2s ease",
-                                                    padding: "4px 8px",
+                                                    marginLeft: "clamp(-40px, -2vw, -8px)",
+                                                    marginRight: "clamp(-40px, -2vw, -8px)",
+                                                    paddingLeft: "calc(8px + clamp(8px, 2vw, 40px))",
+                                                    paddingRight: "calc(8px + clamp(8px, 2vw, 40px))",
+                                                    paddingTop: "4px",
+                                                    paddingBottom: "4px",
                                                 }}
                                             >
+                                                {/* 左右グラデーション枠線（上透明→下で不透明） */}
+                                                {(implantHover || implantClosing) && (
+                                                    <>
+                                                        <div style={{
+                                                            position: "absolute", top: 0, left: 0,
+                                                            width: "1px", height: "100%",
+                                                            background: "linear-gradient(to bottom, transparent 0%, rgba(100, 150, 120, 0.24) 100%)",
+                                                            pointerEvents: "none",
+                                                        }} />
+                                                        <div style={{
+                                                            position: "absolute", top: 0, right: 0,
+                                                            width: "1px", height: "100%",
+                                                            background: "linear-gradient(to bottom, transparent 0%, rgba(100, 150, 120, 0.24) 100%)",
+                                                            pointerEvents: "none",
+                                                        }} />
+                                                    </>
+                                                )}
                                                 <Link
                                                     href={sec.href}
                                                     onClick={handlePress(i, sec.href)}
@@ -241,22 +267,34 @@ export default function Header() {
                                                     <div
                                                         className="absolute flex flex-col"
                                                         style={{
-                                                            top: "103%",
-                                                            left: "clamp(-40px, -2vw, -5px)",
-                                                            right: "clamp(-40px, -2vw, -5px)",
-                                                            background: "linear-gradient(to bottom, #d9ffe874 0%, #deffebf6 10%)",
+                                                            top: "100%",
+                                                            left: 0,
+                                                            right: 0,
+                                                            background: "linear-gradient(to bottom, #deffeba8 0%, #deffebed 20%)",
                                                             borderRadius: "0 0 8px 8px",
                                                             fontSize: "clamp(10px, 1.5vw, 14px)",
                                                             animation: implantClosing
                                                                 ? "slideUp 0.25s ease forwards"
                                                                 : "slideDown 0.25s ease forwards",
-                                                            transformOrigin: "top",
+                                                            overflow: "hidden",
                                                             paddingBottom: "4px",
-                                                            borderLeft: "1px solid rgba(100,150,120,0.4)",
-                                                            borderRight: "1px solid rgba(100,150,120,0.4)",
                                                             borderBottom: "1px solid rgba(100,150,120,0.4)",
+                                                            // borderLeft・borderRight は削除
                                                         }}
                                                     >
+                                                        {/* 左枠線：親の0.24から0.4へ続くグラデーション */}
+                                                        <div style={{
+                                                            position: "absolute", top: 0, left: 0,
+                                                            width: "1px", height: "100%",
+                                                            background: "linear-gradient(to bottom, rgba(100,150,120,0.24) 0%, rgba(100,150,120,0.4) 60%)",
+                                                            pointerEvents: "none",
+                                                        }} />
+                                                        <div style={{
+                                                            position: "absolute", top: 0, right: 0,
+                                                            width: "1px", height: "100%",
+                                                            background: "linear-gradient(to bottom, rgba(100,150,120,0.24) 0%, rgba(100,150,120,0.4) 60%)",
+                                                            pointerEvents: "none",
+                                                        }} />
                                                         <Link href="/flow" className="py-3 hover:underline whitespace-nowrap text-center">治療の流れ</Link>
                                                         <div style={{ height: "1px", background: "rgba(100,150,120,0.3)", margin: "0 30px" }} />
                                                         <Link href="/price" className="py-3 hover:underline whitespace-nowrap text-center">料金</Link>
