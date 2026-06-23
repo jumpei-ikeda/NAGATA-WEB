@@ -228,7 +228,7 @@ export default function Header() {
                                                 style={{
                                                     borderRadius: (implantHover || implantClosing) ? "8px 8px 0 0" : "8px",
                                                     background: (implantHover || implantClosing)
-                                                        ? "linear-gradient(to bottom, transparent 0%, #deffeba8 100%)"
+                                                        ? "linear-gradient(to bottom, transparent 0%, #deffebb4 100%)"
                                                         : "transparent",
                                                     transition: "background 0.2s ease",
                                                     marginLeft: "clamp(-40px, -2vw, -8px)",
@@ -245,13 +245,13 @@ export default function Header() {
                                                         <div style={{
                                                             position: "absolute", top: 0, left: 0,
                                                             width: "1px", height: "100%",
-                                                            background: "linear-gradient(to bottom, transparent 0%, rgba(100, 150, 120, 0.24) 100%)",
+                                                            background: "linear-gradient(to bottom, transparent 0%, rgba(100, 150, 120, 0.1) 100%)",
                                                             pointerEvents: "none",
                                                         }} />
                                                         <div style={{
                                                             position: "absolute", top: 0, right: 0,
                                                             width: "1px", height: "100%",
-                                                            background: "linear-gradient(to bottom, transparent 0%, rgba(100, 150, 120, 0.24) 100%)",
+                                                            background: "linear-gradient(to bottom, transparent 0%, rgba(100, 150, 120, 0.1) 100%)",
                                                             pointerEvents: "none",
                                                         }} />
                                                     </>
@@ -270,7 +270,7 @@ export default function Header() {
                                                             top: "100%",
                                                             left: 0,
                                                             right: 0,
-                                                            background: "linear-gradient(to bottom, #deffeba8 0%, #deffebed 20%)",
+                                                            background: "linear-gradient(to bottom, #deffebb4 0%, #deffebed 26%)",
                                                             borderRadius: "0 0 8px 8px",
                                                             fontSize: "clamp(10px, 1.5vw, 14px)",
                                                             animation: implantClosing
@@ -286,13 +286,13 @@ export default function Header() {
                                                         <div style={{
                                                             position: "absolute", top: 0, left: 0,
                                                             width: "1px", height: "100%",
-                                                            background: "linear-gradient(to bottom, rgba(100,150,120,0.24) 0%, rgba(100,150,120,0.4) 60%)",
+                                                            background: "linear-gradient(to bottom, rgba(100, 150, 120, 0.1) 0%, rgba(100,150,120,0.4) 60%)",
                                                             pointerEvents: "none",
                                                         }} />
                                                         <div style={{
                                                             position: "absolute", top: 0, right: 0,
                                                             width: "1px", height: "100%",
-                                                            background: "linear-gradient(to bottom, rgba(100,150,120,0.24) 0%, rgba(100,150,120,0.4) 60%)",
+                                                            background: "linear-gradient(to bottom, rgba(100, 150, 120, 0.1) 0%, rgba(100,150,120,0.4) 60%)",
                                                             pointerEvents: "none",
                                                         }} />
                                                         <Link href="/flow" className="py-3 hover:underline whitespace-nowrap text-center">治療の流れ</Link>

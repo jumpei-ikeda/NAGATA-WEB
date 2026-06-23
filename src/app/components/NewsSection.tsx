@@ -87,7 +87,8 @@ export default async function NewsSection() {
                     paddingBottom: "2px",
                     letterSpacing: "0.08em",
                 }}>
-                    すべて見る →
+                    <span style={{ fontSize: "0.65rem" }}>▶</span>
+                    すべて見る
                 </Link>
             </div>
         </section>

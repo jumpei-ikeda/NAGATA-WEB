@@ -52,7 +52,8 @@ export default function SedationSection() {
                         letterSpacing: "0.08em",
                     }}
                     >
-                    永田 彰純 院長 →
+                        <span style={{ fontSize: "0.65rem" }}>▶</span>
+                    永田 彰純 院長 
                 </a>
             </div>
 

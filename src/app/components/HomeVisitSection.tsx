@@ -44,8 +44,26 @@ export default function HomeVisitSection() {
                     <p className="text-sm md:text-base mt-2" style={{ color: "#333" }}>
                         FAX：<span style={{ fontWeight: 600 }}>０３（６４１０）８０１８</span>
                     </p>
+                    <div style={{ marginTop: "16px" }}>
+                    <a
+                        href="/contact"
+                        style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "6px",
+                            fontSize: "0.9rem",
+                            color: "#4a9a70",
+                            textDecoration: "none",
+                            borderBottom: "1px solid rgba(74,154,112,0.4)",
+                            paddingBottom: "2px",
+                        }}
+                        >
+                        <span style={{ fontSize: "0.65rem" }}>▶</span>
+                        お問い合わせページへ
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+        </section >
     );
 }
