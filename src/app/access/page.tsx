@@ -84,7 +84,7 @@ export default function AccessPage() {
       `}</style>
 
             {/* ヒーロー */}
-            <section style={{ padding: "60px 40px 48px", maxWidth: "1100px", margin: "0 auto" }}>
+            <section style={{ padding: "30px 40px 48px", maxWidth: "1100px", margin: "0 auto" }}>
                 <div className={`fade-up ${visible ? "in" : ""}`}>
                     <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "0.78rem", letterSpacing: "0.35em", color: "#4a9a70", marginBottom: "10px" }}>ACCESS</p>
                     <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 5vw, 3.4rem)", fontWeight: 300, letterSpacing: "0.04em", lineHeight: 1.2, marginBottom: "20px" }}>

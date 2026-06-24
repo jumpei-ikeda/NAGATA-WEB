@@ -12,7 +12,7 @@ export default async function NewsPage() {
     const newsList = await getAllNews();
 
     return (
-        <main style={{ padding: "80px 40px", maxWidth: "800px", margin: "0 auto" }}>
+        <main style={{ padding: "40px 40px", maxWidth: "800px", margin: "0 auto" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "40px" }}>
                 <div style={{
                     width: "3px", height: "28px",

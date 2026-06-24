@@ -246,7 +246,7 @@ export default function ContactPage() {
             `}</style>
 
             {/* ヒーロー */}
-            <section style={{ padding: "60px 40px 48px", maxWidth: "1100px", margin: "0 auto" }}>
+            <section style={{ padding: "30px 40px 48px", maxWidth: "1100px", margin: "0 auto" }}>
                 <div className={`fade-up ${visible ? "in" : ""}`}>
                     <p style={{
                         fontFamily: "'Cormorant Garamond', serif",
