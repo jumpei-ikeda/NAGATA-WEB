@@ -355,7 +355,7 @@ export default function Header() {
                     className="md:hidden fixed left-0 w-full pt-8 px-4 pb-4 flex flex-col gap-4 z-10 items-center"
                     style={{
                         top: headerRef.current ? `${headerRef.current.clientHeight - 24}px` : "clamp(56px,6vw,84px)",
-                        background: "linear-gradient(170deg, #deffebef 0%, #ebfffcf9 50%, #dffbf1ef 100%)",
+                        background: "linear-gradient(170deg, #f6fffdef 0%, #fafffef9 50%, #f5fffdef 100%)",
                     }}
                 >
                     {sections.map((sec, i) => (
