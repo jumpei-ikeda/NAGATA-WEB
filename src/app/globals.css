@@ -55,7 +55,7 @@
     --footer-height: clamp(60px, 10vw, 70px);
     --side-gap: 0px;
     
-    --bg-gradient: linear-gradient(160deg, #eaf5f0 0%, #f4f8f4 40%, #e8f4f0 100%);
+    --bg-gradient: linear-gradient(160deg, #ebfff7 0%, #f5fff9 40%, #effffa 100%);
   }
 
   html,
