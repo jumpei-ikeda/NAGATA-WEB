@@ -290,7 +290,7 @@ export default function ContactPage() {
                         </span>
                     </a>
                     <p style={{ fontSize: "0.92rem", color: "#4a6058", lineHeight: 2, maxWidth: "520px", marginTop: "60px" }}>
-                        お名前やメールアドレスは、お問い合わせの返信のみに使用します。<br />
+                        お名前やメールアドレスは、お問い合わせの返信にのみ使用します。<br />
                         <span style={{ color: "#4a9a70" }}>※</span> は入力必須です。
                     </p>
                 </div>

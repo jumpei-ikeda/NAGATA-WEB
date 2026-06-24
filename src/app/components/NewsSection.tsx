@@ -16,13 +16,13 @@ export default async function NewsSection() {
 
     return (
         <section style={{
-            padding: "3px 5px",
+            padding: "0px 5px",
             width: "100%",
         }}>
             {/* 見出し */}
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
                 <div style={{
-                    width: "3px", height: "10px",
+                    width: "3px", height: "12px",
                     background: "linear-gradient(#4a9a70, #8dd4b0)",
                     borderRadius: "2px"
                 }} />
@@ -31,9 +31,9 @@ export default async function NewsSection() {
 
             {/* リスト */}
             <div style={{
-                background: "rgba(255,255,255,0.7)",
+                background: "rgba(255, 255, 255, 0.7)",
                 backdropFilter: "blur(8px)",
-                border: "1px solid rgba(255,255,255,0.9)",
+                border: "1px solid rgba(176, 223, 220, 0.9)",
                 borderRadius: "8px",
                 overflow: "hidden",
                 boxShadow: "0 4px 24px rgba(60,120,90,0.07)",
@@ -43,7 +43,7 @@ export default async function NewsSection() {
                         display: "flex",
                         alignItems: "baseline",
                         gap: "24px",
-                        padding: "9px 28px",
+                        padding: "6px 10px",
                         borderBottom: i < newsList.length - 1 ? "1px solid rgba(180,220,200,0.4)" : "none",
                     }}>
                         <span style={{

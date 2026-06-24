@@ -26,8 +26,38 @@ export default function SedationSection() {
 
                 {/* 左：タイトル・院長写真・リンク */}
                 <div className="left-col gap-4">
-                    <h2 className="text-2xl font-bold" style={{ color: "#2d6a4f" }}>
+                    <h2 className="text-2xl font-bold" style={{ color: "#2d6a4f", position: "relative", display: "inline-block" }}>
                         こわくない安心治療とは
+                        <svg
+                            viewBox="0 0 220 10"
+                            xmlns="http://www.w3.org/2000/svg"
+                            style={{
+                                position: "absolute",
+                                left: 0,
+                                bottom: "-6px",
+                                width: "100%",
+                                height: "10px",
+                                overflow: "visible",
+                            }}
+                            preserveAspectRatio="none"
+                        >
+                            <path
+                                d="M2,6 C20,3 60,2 110,5 C160,8 190,7 218,6"
+                                stroke="#d2effceb"
+                                strokeWidth="20.5"
+                                strokeLinecap="round"
+                                fill="none"
+                                style={{
+                                    strokeDasharray: "1040",
+                                    strokeDashoffset: "0",
+                                    filter: "url(#roughen)",
+                                }}
+                            />
+                            <filter id="roughen">
+                                <feTurbulence type="turbulence" baseFrequency="0.55" numOctaves="2" result="noise" seed="3" />
+                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="7.2" xChannelSelector="R" yChannelSelector="G" />
+                            </filter>
+                        </svg>
                     </h2>
                     <img
                         src="/2021_director.jpg"
@@ -80,7 +110,7 @@ export default function SedationSection() {
                                 width: "8px",
                                 height: "8px",
                                 borderRadius: "50%",
-                                background: "#52b788",
+                                background: "#6dd8c3c4",
                                 display: "inline-block",
                                 marginTop: "6px"
                             }}>
@@ -102,21 +132,21 @@ export default function SedationSection() {
                 </p>
                 <ol className="flex flex-col gap-2">
                     {[
-                        "痛くないかどうか心配",
-                        "怖くない歯科医師かどうか",
-                        "治療の腕がよいかどうか",
-                        "説明をよくしてくれるかどうか",
-                        "料金は適正かどうか",
+                        "痛くないか",
+                        "怖くない歯科医師か",
+                        "治療の腕がよいか",
+                        "説明をよくしてくれるか",
+                        "料金は適正か",
                         "通院しやすいか",
                     ].map((item, i) => (
                         <li key={i} className="flex gap-2 text-sm md:text-base items-center" style={{ color: "#333" }}>
-                            <span className="font-bold shrink-0" style={{ color: "#52b788" }}>（{i + 1}）</span>
+                            <span className="font-bold shrink-0" style={{ color: "#10a18cc4" }}>（{i + 1}）</span>
                             {item}
                         </li>
                     ))}
                 </ol>
         <p className="text-sm md:text-base leading-relaxed" style={{ color: "#333" }}>
-                    しかし、多くのアンケートでわかる事は上記の（1）や（2）の痛くないかどうか、不安なく受診できるかどうかが必ず患者さんの要望の上位にきます。そこで当院では、<br /><strong>セディエーション（鎮静法）</strong>を実施しています。セディエーション（鎮静法）を利用すると患者さんは眠っている間に痛み等感じず全身管理下のもと安全に治療を終える事ができます。
+                    多くのアンケートでわかる事は、<br />上記(1)(2)の「痛くないか」「不安なく受診できるか」が必ず患者さんの要望の上位にきます。そこで当院では、<br /><strong>セディエーション（鎮静法）</strong>を実施しています。セディエーション（鎮静法）を利用すると患者さんは眠っている間に痛み等感じず全身管理下のもと安全に治療を終える事ができます。
         </p>
         <p className="text-sm md:text-base leading-relaxed" style={{ color: "#333" }}>
             お悩みの方も一緒にお口の健康を改善しましょう。痛みのない、安心できる歯科医療を実践したいと思っています。料金は治療内容、治療時間等により異なります。御来院の上ご相談下さい。
