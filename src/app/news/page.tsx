@@ -16,7 +16,7 @@ export default async function NewsPage() {
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "40px" }}>
                 <div style={{
                     width: "3px", height: "28px",
-                    background: "linear-gradient(#4a9a70, #8dd4b0)",
+                    background: "var(--bg-gradient)",
                     borderRadius: "2px"
                 }} />
                 <h1 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>お知らせ</h1>

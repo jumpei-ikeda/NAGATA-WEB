@@ -16,13 +16,13 @@ export default async function NewsSection() {
 
     return (
         <section style={{
-            padding: "3px 10px",
+            padding: "3px 5px",
             width: "100%",
         }}>
             {/* 見出し */}
-            <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
                 <div style={{
-                    width: "3px", height: "28px",
+                    width: "3px", height: "10px",
                     background: "linear-gradient(#4a9a70, #8dd4b0)",
                     borderRadius: "2px"
                 }} />
@@ -43,7 +43,7 @@ export default async function NewsSection() {
                         display: "flex",
                         alignItems: "baseline",
                         gap: "24px",
-                        padding: "18px 28px",
+                        padding: "9px 28px",
                         borderBottom: i < newsList.length - 1 ? "1px solid rgba(180,220,200,0.4)" : "none",
                     }}>
                         <span style={{
@@ -78,7 +78,7 @@ export default async function NewsSection() {
             </div>
 
             {/* もっと見る */}
-            <div style={{ textAlign: "right", marginTop: "16px" }}>
+            <div style={{ textAlign: "right", marginTop: "8px" }}>
                 <Link href="/news" style={{
                     fontSize: "0.82rem",
                     color: "#4a9a70",

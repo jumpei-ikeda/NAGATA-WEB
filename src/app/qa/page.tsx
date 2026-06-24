@@ -41,7 +41,7 @@ export default function QAPage() {
         <main
             className="min-h-screen"
             style={{
-                background: "linear-gradient(160deg, #eaf5f0 0%, #f4f8f4 40%, #e8f4f0 100%)",
+                background: "var(--bg-gradient)",
                 fontFamily: "'Noto Serif JP', serif",
                 color: "#1a3028",
             }}
