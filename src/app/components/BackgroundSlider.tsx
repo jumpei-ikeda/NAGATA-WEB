@@ -18,32 +18,42 @@ export default function BackgroundSlider({ onHeightChange }: { onHeightChange?: 
     }, []);
 
     return (
-        <div style={{ position: "relative", width: "100%", height: firstHeight ?? "auto" }}>
-            {images.map((src, i) => (
-                <img
-                    key={i}
-                    src={src}
-                    alt="background"
-                    onLoad={(e) => {
-                        if (i === 0) {
-                            const h = (e.target as HTMLImageElement).offsetHeight;
-                            setFirstHeight(h);
-                            onHeightChange?.(h);
-                        }
-                    }}
-                    style={{
-                        width: "100%",
-                        height: firstHeight ? "100%" : "auto",
-                        objectFit: "cover",
-                        display: "block",
-                        position: firstHeight ? "absolute" : (i === 0 ? "relative" : "absolute"),
-                        top: 0,
-                        left: 0,
-                        opacity: index === i ? 1 : 0,
-                        transition: "opacity 1s ease-in-out",
-                    }}
-                />
-            ))}
-        </div>
+        <>
+            <style>{`
+                @keyframes zoom-out {
+                    from { transform: scale(1.08); }
+                    to   { transform: scale(1.0); }
+                }
+            `}</style>
+            <div style={{ position: "relative", width: "100%", height: firstHeight ?? "auto", overflow: "hidden" }}>
+                {images.map((src, i) => (
+                    <img
+                        key={i}
+                        src={src}
+                        alt="background"
+                        onLoad={(e) => {
+                            if (i === 0) {
+                                const h = (e.target as HTMLImageElement).offsetHeight;
+                                setFirstHeight(h);
+                                onHeightChange?.(h);
+                            }
+                        }}
+                        style={{
+                            width: "100%",
+                            height: firstHeight ? "100%" : "auto",
+                            objectFit: "cover",
+                            display: "block",
+                            position: firstHeight ? "absolute" : (i === 0 ? "relative" : "absolute"),
+                            top: 0,
+                            left: 0,
+                            opacity: index === i ? 1 : 0,
+                            transition: "opacity 1s ease-in-out",
+                            animation: index === i ? "zoom-out 6s ease-out forwards" : "none",
+                            transformOrigin: "center center",
+                        }}
+                    />
+                ))}
+            </div>
+        </>
     );
 }

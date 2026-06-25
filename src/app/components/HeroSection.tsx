@@ -30,7 +30,7 @@ export default function HeroSection() {
                 <BackgroundSlider onHeightChange={setImgHeight} />
 
                 <div className="absolute inset-0" style={{
-                    background: "linear-gradient(to top, rgba(10,30,20,0.65) 0%, rgba(10,30,20,0.1) 50%, transparent 100%)",
+                    background: "linear-gradient(to top, rgba(10,30,20,0.55) 0%, rgba(10,30,20,0.1) 50%, transparent 100%)",
                 }} />
 
                 <div
