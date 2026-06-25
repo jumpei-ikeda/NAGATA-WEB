@@ -13,7 +13,7 @@ export default function BackgroundSlider({ onHeightChange }: { onHeightChange?: 
     useEffect(() => {
         const timer = setInterval(() => {
             setIndex((prev) => (prev + 1) % images.length);
-        }, 5500);
+        }, 7000);
         return () => clearInterval(timer);
     }, []);
 
@@ -21,7 +21,7 @@ export default function BackgroundSlider({ onHeightChange }: { onHeightChange?: 
         <>
             <style>{`
                 @keyframes zoom-out {
-                    from { transform: scale(1.08); }
+                    from { transform: scale(1.05); }
                     to   { transform: scale(1.0); }
                 }
             `}</style>
@@ -47,8 +47,8 @@ export default function BackgroundSlider({ onHeightChange }: { onHeightChange?: 
                             top: 0,
                             left: 0,
                             opacity: index === i ? 1 : 0,
-                            transition: "opacity 1s ease-in-out",
-                            animation: index === i ? "zoom-out 6s ease-out forwards" : "none",
+                            transition: "opacity 2s ease-in-out",
+                            animation: index === i ? "zoom-out 5s ease-out forwards" : "none",
                             transformOrigin: "center center",
                         }}
                     />

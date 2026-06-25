@@ -23,6 +23,8 @@ export default function HeroSection() {
                 marginLeft: "var(--side-gap)",
                 marginRight: "var(--side-gap)",
                 width: "calc(100% - var(--side-gap) * 2)",
+                maxHeight: "600px",
+                overflow: "hidden",
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(28px)",
                 transition: "opacity 0.7s ease, transform 0.7s ease",
@@ -30,7 +32,7 @@ export default function HeroSection() {
                 <BackgroundSlider onHeightChange={setImgHeight} />
 
                 <div className="absolute inset-0" style={{
-                    background: "linear-gradient(to top, rgba(10,30,20,0.55) 0%, rgba(10,30,20,0.1) 50%, transparent 100%)",
+                    background: "linear-gradient(to top, rgba(10,30,20,0.35) 0%, rgba(10,30,20,0.1) 50%, transparent 100%)",
                 }} />
 
                 <div

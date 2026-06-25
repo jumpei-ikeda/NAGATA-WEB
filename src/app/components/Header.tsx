@@ -223,7 +223,7 @@ export default function Header() {
                                                     implantLeaveTimer.current = setTimeout(() => {
                                                         setImplantHover(false);
                                                         setImplantClosing(false);
-                                                    }, 250);
+                                                    }, 1000);
                                                 }}
                                                 style={{
                                                     borderRadius: (implantHover || implantClosing) ? "8px 8px 0 0" : "8px",
@@ -274,8 +274,8 @@ export default function Header() {
                                                             borderRadius: "0 0 8px 8px",
                                                             fontSize: "clamp(10px, 1.5vw, 14px)",
                                                             animation: implantClosing
-                                                                ? "slideUp 0.25s ease forwards"
-                                                                : "slideDown 0.25s ease forwards",
+                                                                ? "slideUp 0.5s ease forwards"
+                                                                : "slideDown 0.5s ease forwards",
                                                             overflow: "hidden",
                                                             paddingBottom: "4px",
                                                             borderBottom: "1px solid rgba(100,150,120,0.4)",
