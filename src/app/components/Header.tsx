@@ -219,11 +219,13 @@ export default function Header() {
                                                     setImplantHover(true);
                                                 }}
                                                 onMouseLeave={() => {
-                                                    setImplantClosing(true);
                                                     implantLeaveTimer.current = setTimeout(() => {
-                                                        setImplantHover(false);
-                                                        setImplantClosing(false);
-                                                    }, 1000);
+                                                        setImplantClosing(true);
+                                                        setTimeout(() => {
+                                                            setImplantHover(false);
+                                                            setImplantClosing(false);
+                                                        }, 500); // slideUpのアニメーション時間
+                                                    }, 300); // カーソルが外れてから閉じ始めるまでの待機時間
                                                 }}
                                                 style={{
                                                     borderRadius: (implantHover || implantClosing) ? "8px 8px 0 0" : "8px",

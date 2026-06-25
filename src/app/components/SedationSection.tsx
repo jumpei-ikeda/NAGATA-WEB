@@ -140,7 +140,7 @@ export default function SedationSection() {
                         "通院しやすいか",
                     ].map((item, i) => (
                         <li key={i} className="flex gap-2 text-sm md:text-base items-center" style={{ color: "#333" }}>
-                            <span className="font-bold shrink-0" style={{ color: "#10a18cc4" }}>（{i + 1}）</span>
+                            <span className="font-bold shrink-0" style={{ color: "#10a18cc4", marginLeft: "-13px" }}>（{i + 1}）</span>
                             {item}
                         </li>
                     ))}
