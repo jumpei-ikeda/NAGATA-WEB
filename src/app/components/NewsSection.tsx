@@ -26,7 +26,7 @@ export default async function NewsSection() {
                     background: "linear-gradient(#4a9a70, #8dd4b0)",
                     borderRadius: "2px"
                 }} />
-                <h2 style={{ fontSize: "1.1rem", letterSpacing: "0.15em", color: "#1a3028" }}>お知らせ</h2>
+                <h2 style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.2rem)", letterSpacing: "0.15em", color: "#1a3028" }}>お知らせ</h2>
             </div>
 
             {/* リスト */}
@@ -48,7 +48,7 @@ export default async function NewsSection() {
                     }}>
                         <span style={{
                             flexShrink: 0,
-                            fontSize: "0.8rem",
+                            fontSize: "clamp(0.7rem, 1.5vw, 1.1rem)",
                             color: "#4a9a70",
                             letterSpacing: "0.05em",
                             fontFamily: "'Cormorant Garamond', serif",
@@ -59,14 +59,14 @@ export default async function NewsSection() {
                         </span>
                         <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
                             <span style={{
-                                fontSize: "0.9rem",
+                                fontSize: "clamp(0.8rem, 1.5vw, 1.1rem)",
                                 color: "#1a3028",
                                 lineHeight: 1.7,
                             }}>
                                 {news.title}
                             </span>
                             <span style={{
-                                fontSize: "0.82rem",
+                                fontSize: "clamp(0.8rem, 1.5vw, 1.1rem)",
                                 color: "#4a7060",
                                 lineHeight: 1.7,
                             }}

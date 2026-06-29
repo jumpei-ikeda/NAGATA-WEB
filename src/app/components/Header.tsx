@@ -25,6 +25,7 @@ export default function Header() {
     const hamburgerRef = useRef<HTMLButtonElement>(null);
     const menuRef = useRef<HTMLElement>(null);
     const [implantBottom, setImplantBottom] = useState(0);
+    const [menuClosing, setMenuClosing] = useState(false);
 
     useEffect(() => {
         if (!menuOpen) return;
@@ -33,7 +34,11 @@ export default function Header() {
                 hamburgerRef.current?.contains(e.target as Node) ||
                 menuRef.current?.contains(e.target as Node)
             ) return;
-            setMenuOpen(false);
+            setMenuClosing(true);
+            setTimeout(() => {
+                setMenuOpen(false);
+                setMenuClosing(false);
+            }, 300);
         };
         document.addEventListener("mousedown", handleClick);
         return () => document.removeEventListener("mousedown", handleClick);
@@ -330,16 +335,26 @@ export default function Header() {
                     <button
                         ref={hamburgerRef}
                         className={`
-        text-3xl md:hidden ml-auto text-gray-800
-        transition-transform duration-700 ease-in-out
-        transform-gpu [perspective:800px]
-        ${menuOpen
-                                ? "rotateX(18deg) translateZ(-8px) scale-95"
-                                : "rotateX(0deg) translateZ(0) scale-100"
+                        text-3xl md:hidden ml-auto text-gray-800
+                        transition-transform duration-700 ease-in-out
+                        transform-gpu [perspective:800px]
+                        ${menuOpen
+                                                ? "rotateX(18deg) translateZ(-8px) scale-95"
+                                                : "rotateX(0deg) translateZ(0) scale-100"
+                                            }
+                        active:scale-95
+                    `}
+                        onClick={() => {
+                            if (menuOpen) {
+                                setMenuClosing(true);
+                                setTimeout(() => {
+                                    setMenuOpen(false);
+                                    setMenuClosing(false);
+                                }, 300);
+                            } else {
+                                setMenuOpen(true);
                             }
-        active:scale-95
-    `}
-                        onClick={() => setMenuOpen(!menuOpen)}
+                        }}
                     >
                         <div className="flex flex-col items-center">
                             <span>{menuOpen ? "✕" : "☰"}</span>
@@ -359,6 +374,14 @@ export default function Header() {
                     style={{
                         top: headerRef.current ? `${headerRef.current.clientHeight - 24}px` : "clamp(56px,6vw,84px)",
                         background: "linear-gradient(170deg, #f6fffdef 0%, #fafffef9 50%, #f5fffdef 100%)",
+                        borderBottom: "1px solid rgba(100,150,120,0.4)",
+                        borderLeft: "1px solid rgba(100,150,120,0.4)",
+                        borderRight: "1px solid rgba(100,150,120,0.4)",
+                        borderRadius: "0 0 16px 16px",
+                        animation: menuClosing
+                            ? "slideUp 0.3s ease forwards"
+                            : "slideDown 0.3s ease forwards",
+                        overflow: "hidden",
                     }}
                 >
                     {sections.map((sec, i) => (

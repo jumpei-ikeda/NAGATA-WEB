@@ -69,16 +69,16 @@ export default function HeroSection() {
                 >
                     <p style={{
                         fontFamily: "'Cormorant Garamond', serif",
-                        fontSize: `calc(clamp(0.85rem, 1vw, 0.85rem) * ${heightScale})`,
+                        fontSize: `calc(clamp(0.85rem, 3vw, 3rem) * ${heightScale})`,
                         letterSpacing: "0.35em",
                         color: "#8dd4b0",
-                        marginBottom: `calc(clamp(6px, 1vw, 12px) * ${heightScale})`,
+                        marginBottom: `calc(clamp(1px, 1vw, 12px) * ${heightScale})`,
                     }}>
                         NAGATA DENTAL CLINIC
                     </p>
                     <h1 style={{
                         fontFamily: "'Noto Serif JP', serif",
-                        fontSize: `calc(clamp(1.9rem, 4vw, 3.2rem) * ${heightScale})`,
+                        fontSize: `calc(clamp(1.9rem, 7vw, 9.2rem) * ${heightScale})`,
                         fontWeight: 400,
                         letterSpacing: "0.08em",
                         lineHeight: 1.6,
@@ -89,7 +89,7 @@ export default function HeroSection() {
                         より美しく
                     </h1>
                     <p style={{
-                        fontSize: `calc(clamp(0.7rem, 1.1vw, 0.9rem) * ${heightScale})`,
+                        fontSize: `calc(clamp(0.7rem, 3vw, 1.8rem) * ${heightScale})`,
                         color: "rgba(255,255,255,0.8)",
                         lineHeight: 2,
                     }}>
