@@ -34,7 +34,32 @@ export default function HeroSection() {
                 <div className="absolute inset-0" style={{
                     background: "linear-gradient(to top, rgba(10,30,20,0.35) 0%, rgba(10,30,20,0.1) 50%, transparent 100%)",
                 }} />
-
+                <a
+                    href="tel:03-6410-8018"
+                className="absolute"
+                style={{
+                    top: "clamp(44px, 11vw, 400px)",
+                    right: "clamp(1px, 4.5vw, 200px)",
+                    background: "rgba(153, 154, 200, 0.21)",
+                    backdropFilter: "blur(2px)",
+                    border: "1px solid rgba(255, 255, 255, 0.04)",
+                    borderRadius: "50px",
+                    padding: "8px 4px",
+                    textDecoration: "none",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "4px",
+                }}
+                >
+                <span style={{
+                    fontSize: "clamp(0.5rem, 2.6vw, 1.7rem)",
+                    letterSpacing: "0.15em",
+                    color: "rgb(255, 255, 255)",
+                }}>
+                    ご予約・お問い合わせ
+                </span>
+            </a>
                 <div
                     className={`fade-up ${visible ? "in" : ""} absolute`}
                     style={{
