@@ -26,6 +26,7 @@ export default function Header() {
     const menuRef = useRef<HTMLElement>(null);
     const [implantBottom, setImplantBottom] = useState(0);
     const [menuClosing, setMenuClosing] = useState(false);
+    const implantCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
         if (!menuOpen) return;
@@ -95,6 +96,17 @@ export default function Header() {
     transition-transform duration-200
     hover:-translate-y-[2px]
 `;
+
+    const dropdownLinkBase = `
+    py-3 whitespace-nowrap text-center
+    relative inline-block
+    after:content-[''] after:absolute after:left-0 after:bottom-[4px]
+    after:w-full after:h-[1px] after:bg-current
+    after:scale-x-0 after:origin-center
+    after:transition-transform after:duration-300
+    hover:after:scale-x-100
+`;
+
 
     const pressedClass = (i: number) =>
         pressedIndex === i
@@ -219,18 +231,26 @@ export default function Header() {
                                                 ref={implantRef}
                                                 className="relative"
                                                 onMouseEnter={() => {
-                                                    if (implantLeaveTimer.current) clearTimeout(implantLeaveTimer.current);
+                                                    // 両方のタイマーをキャンセル
+                                                    if (implantLeaveTimer.current) {
+                                                        clearTimeout(implantLeaveTimer.current);
+                                                        implantLeaveTimer.current = null;
+                                                    }
+                                                    if (implantCloseTimer.current) {
+                                                        clearTimeout(implantCloseTimer.current);
+                                                        implantCloseTimer.current = null;
+                                                    }
                                                     setImplantClosing(false);
                                                     setImplantHover(true);
                                                 }}
                                                 onMouseLeave={() => {
                                                     implantLeaveTimer.current = setTimeout(() => {
                                                         setImplantClosing(true);
-                                                        setTimeout(() => {
+                                                        implantCloseTimer.current = setTimeout(() => {
                                                             setImplantHover(false);
                                                             setImplantClosing(false);
-                                                        }, 500); // slideUpのアニメーション時間
-                                                    }, 300); // カーソルが外れてから閉じ始めるまでの待機時間
+                                                        }, 500);
+                                                    }, 300);
                                                 }}
                                                 style={{
                                                     borderRadius: (implantHover || implantClosing) ? "8px 8px 0 0" : "8px",
@@ -270,7 +290,7 @@ export default function Header() {
                                                 >
                                                     {sec.title}
                                                 </Link>
-                                                {(implantHover || implantClosing) && (
+                                                {implantHover && (
                                                     <div
                                                         className="absolute flex flex-col"
                                                         style={{
@@ -286,8 +306,8 @@ export default function Header() {
                                                             overflow: "hidden",
                                                             paddingBottom: "4px",
                                                             borderBottom: "1px solid rgba(100,150,120,0.4)",
-                                                            // borderLeft・borderRight は削除
                                                         }}
+                                                    
                                                     >
                                                         {/* 左枠線：親の0.24から0.4へ続くグラデーション */}
                                                         <div style={{
@@ -302,11 +322,17 @@ export default function Header() {
                                                             background: "linear-gradient(to bottom, rgba(100, 150, 120, 0.1) 0%, rgba(100,150,120,0.4) 60%)",
                                                             pointerEvents: "none",
                                                         }} />
-                                                        <Link href="/flow" className="py-3 hover:underline whitespace-nowrap text-center">治療の流れ</Link>
+                                                        <div style={{ display: "flex", justifyContent: "center" }}>
+                                                            <Link href="/flow" className={dropdownLinkBase}>治療の流れ</Link>
+                                                        </div>
                                                         <div style={{ height: "1px", background: "rgba(100,150,120,0.3)", margin: "0 30px" }} />
-                                                        <Link href="/price" className="py-3 hover:underline whitespace-nowrap text-center">料金</Link>
+                                                        <div style={{ display: "flex", justifyContent: "center" }}>
+                                                            <Link href="/price" className={dropdownLinkBase}>料金</Link>
+                                                        </div>
                                                         <div style={{ height: "1px", background: "rgba(100,150,120,0.3)", margin: "0 30px" }} />
-                                                        <Link href="/qa" className="py-3 hover:underline whitespace-nowrap text-center">Q&A</Link>
+                                                        <div style={{ display: "flex", justifyContent: "center" }}>
+                                                            <Link href="/qa" className={dropdownLinkBase}>Q&A</Link>
+                                                        </div>
                                                     </div>
                                                 )}
                                             </div>
