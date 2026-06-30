@@ -55,7 +55,7 @@ export default function CTSection() {
                         rel="noopener noreferrer"
                         style={{ color: "#4a9a70", borderBottom: "1px solid #4a9a70", textDecoration: "none" }}
         >
-                        当院指定の申込用紙
+                    <span style={{ fontSize: "0.65rem" }}>▶</span>当院指定の申込用紙
                     </a>
                     がありますので、お電話にてその旨ご相談下さい。
                 </p>

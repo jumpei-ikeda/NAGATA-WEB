@@ -159,7 +159,7 @@ export default function ImplantPage() {
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "center",
-                                    padding: "3px 5px 3px",
+                                    padding: "5px 5px 5px",
                                     background: "rgba(224, 255, 229, 0.15)",
                                     backdropFilter: "blur(6px)",
                                     border: "1px solid rgba(74,154,112,0.5)",
@@ -187,8 +187,9 @@ export default function ImplantPage() {
                                     }}
                                 >
                                     <span style={{ fontSize: "0.68rem", letterSpacing: "0.25em", color: "#4a9a70" }}>{item.en}</span>
-                                    <span style={{ fontSize: "clamp(0.9rem, 2vw, 1rem)", fontWeight: 600, color: "#1a3028" }}>{item.label}</span>
-                                    <span style={{ fontSize: "0.75rem", color: "#4a9a70" }}>→</span>
+                                    <span style={{ fontSize: "clamp(0.8rem, 2vw, 1rem)", fontWeight: 600, color: "#1a3028" }}>
+                                        <span style={{ fontSize: "0.65rem", marginRight: "6px", color: "#4a9a70" }}>▶</span>{item.label}
+                                    </span>
                                 </span>
                             </Link>
                         ))}
@@ -301,7 +302,7 @@ export default function ImplantPage() {
                     display: "inline-block", fontSize: "0.85rem", letterSpacing: "0.12em",
                     color: "#4a9a70", textDecoration: "none",
                     borderBottom: "1px solid #4a9a70", paddingBottom: "2px"
-                }}>← トップへ戻る</Link>
+                }}><span style={{ fontSize: "0.65rem" }}>▶</span>トップへ戻る</Link>
             </div>
         </main>
     );

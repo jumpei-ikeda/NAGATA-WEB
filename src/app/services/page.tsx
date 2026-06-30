@@ -507,7 +507,7 @@ export default function ServicesPage() {
                     borderBottom: "1px solid #4a9a70",
                     paddingBottom: "2px",
                     transition: "opacity 0.2s"
-                }}>← トップへ戻る</Link>
+                }}><span style={{ fontSize: "0.65rem" }}>▶</span>トップへ戻る</Link>
             </div>
         </main>
     );
