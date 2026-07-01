@@ -153,10 +153,18 @@ export default function AboutPage() {
                                     display: "flex", alignItems: "center", justifyContent: "center",
                                     marginBottom: "24px"
                                 }}>
-                                    <div style={{ textAlign: "center", color: "#4a8a70" }}>
-                                        <div style={{ fontSize: "4rem" }}>👨‍⚕️</div>
-                                        <p style={{ fontSize: "0.78rem", letterSpacing: "0.1em", marginTop: "8px" }}>院長写真</p>
-                                    </div>
+                                    <img
+                                        src="/治療風景.jpg"
+                                        alt=""
+                                        style={{
+                                            width: "clamp(140px, 50vw, 400px)",
+                                            height: "clamp(200px, 20vw, 200px)",
+                                            objectFit: "cover",
+                                           
+                                            border: "3px solid rgba(74,154,112,0.3)",
+                                            boxShadow: "0 4px 20px rgba(60,120,90,0.12)",
+                                        }}
+                                    />
                                 </div>
                                 <p style={{ fontSize: "0.72rem", letterSpacing: "0.2em", color: "#4a9a70", marginBottom: "6px" }}>DIRECTOR</p>
                                 <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.8rem", fontWeight: 400, marginBottom: "4px" }}>永田 彰純</h3>
