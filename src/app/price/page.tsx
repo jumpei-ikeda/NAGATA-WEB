@@ -202,12 +202,12 @@ export default function PricePage() {
                     fontSize: "0.85rem", letterSpacing: "0.12em",
                     color: "#4a9a70", textDecoration: "none",
                     borderBottom: "1px solid #4a9a70", paddingBottom: "2px"
-                }}>← インプラントへ戻る</Link>
+                }}><span style={{ fontSize: "0.65rem" }}>▶</span>インプラントへ戻る</Link>
                 <Link href="/" style={{
                     fontSize: "0.85rem", letterSpacing: "0.12em",
                     color: "#4a9a70", textDecoration: "none",
                     borderBottom: "1px solid #4a9a70", paddingBottom: "2px"
-                }}>← トップへ戻る</Link>
+                }}><span style={{ fontSize: "0.65rem" }}>▶</span>トップへ戻る</Link>
             </div>
         </main>
     );

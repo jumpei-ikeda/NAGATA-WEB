@@ -176,7 +176,7 @@ export default function AccessPage() {
                                     borderBottom: "1px solid #4a9a70", paddingBottom: "1px"
                                 }}
                             >
-                                Google マップで開く →
+                                Google マップで開く
                             </a>
                         </div>
                     </div>
@@ -189,7 +189,7 @@ export default function AccessPage() {
                     display: "inline-block", fontSize: "0.85rem", letterSpacing: "0.12em",
                     color: "#4a9a70", textDecoration: "none",
                     borderBottom: "1px solid #4a9a70", paddingBottom: "2px"
-                }}>← トップへ戻る</Link>
+                }}><span style={{ fontSize: "0.65rem" }}>▶</span>トップへ戻る</Link>
             </div>
         </main>
     );

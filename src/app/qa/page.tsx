@@ -12,7 +12,7 @@ const QA_LIST = [
         a: "年齢の上限はありませんが、骨の成長がほぼ終了する16歳ぐらいから治療を受けることができます。ただし、心臓病や糖尿病などの持病がある人や、妊娠中の人などは受けられない場合があります。また、あごの骨の状態によっても受けられない場合があります。いずれの場合も事前に歯科医師とよくご相談ください。",
     },
     {
-        q: "インプラント手術に伴う痛みは？又手術時間はどれ位必要ですか？",
+        q: "インプラント手術に伴う痛みは？また手術時間はどれ位必要ですか？",
         a: "手術は局所麻酔下で行いますので、ほとんど痛みはありません。もし、それでも心配な方には、静脈内鎮静法を併用した手術をお勧めしています。インプラントの埋入手術時間は、約30分〜2時間位です。",
     },
     {
@@ -20,7 +20,7 @@ const QA_LIST = [
         a: "治療期間としては、下の歯で約3ヶ月、上の歯で約6ヶ月位必要です。なお、骨が非常に薄い為、インプラント治療がむつかしい場合はもう少し日数が必要です。",
     },
     {
-        q: "ローンとかクレジットが使えますか？",
+        q: "ローンやクレジットは使えますか？",
         a: "JCB、VISA、MASTER、AMERICAN EXPRESS、DINERS CLUB、NICOS、DC、UFJカード等、日本で流通しているほとんどのカードがご利用になれます。またそれぞれのカードで分割払いもおこなえます。",
     },
     {
@@ -215,14 +215,19 @@ export default function QAPage() {
             </section>
 
             {/* 戻るリンク */}
-            <div style={{ textAlign: "center", paddingBottom: "80px" }}>
+            <div style={{ textAlign: "center", paddingBottom: "80px", display: "flex", justifyContent: "center", gap: "32px" }}>
                 <Link href="/implant" style={{
                     display: "inline-block",
                     fontSize: "0.85rem", letterSpacing: "0.12em",
                     color: "#4a9a70", textDecoration: "none",
                     borderBottom: "1px solid #4a9a70",
                     paddingBottom: "2px",
-                }}>← インプラントへ戻る</Link>
+                }}><span style={{ fontSize: "0.65rem" }}>▶</span>インプラントへ戻る</Link>
+                <Link href="/" style={{
+                    fontSize: "0.85rem", letterSpacing: "0.12em",
+                    color: "#4a9a70", textDecoration: "none",
+                    borderBottom: "1px solid #4a9a70", paddingBottom: "2px"
+                }}><span style={{ fontSize: "0.65rem" }}>▶</span>トップへ戻る</Link>
             </div>
         </main>
     );

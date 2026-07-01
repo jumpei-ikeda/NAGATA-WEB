@@ -460,7 +460,7 @@ export default function ContactPage() {
                     color: "#4a9a70", textDecoration: "none",
                     borderBottom: "1px solid #4a9a70",
                     paddingBottom: "2px",
-                }}>← トップへ戻る</Link>
+                }}><span style={{ fontSize: "0.65rem" }}>▶</span>トップへ戻る</Link>
             </div>
         </main>
     );

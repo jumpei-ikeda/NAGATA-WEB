@@ -353,13 +353,13 @@ export default function ServicesPage() {
                         <div style={{
                             background: "rgba(234,245,240,0.8)",
                             borderLeft: "4px solid #52b788",
-                            borderRadius: "0 8px 8px 0",
+                            borderRadius: "12px",
                             padding: "16px 20px",
                             marginBottom: "24px",
                         }}>
                             {["虫歯の予防", "歯周病の予防", "歯列不正の予防", "咬合崩壊の予防"].map((item, i) => (
                                 <p key={i} style={{ fontSize: "0.9rem", color: "#1a3028", lineHeight: 2 }}>
-                                    <span style={{ color: "#52b788", fontWeight: 600, marginRight: "8px" }}>（{i + 1}）</span>{item}
+                                    <span style={{ color: "#6dd8c3c4", fontWeight: 600, marginRight: "8px" }}>（{i + 1}）</span>{item}
                                 </p>
                             ))}
                         </div>
@@ -415,7 +415,7 @@ export default function ServicesPage() {
                                 paddingBottom: "2px",
                                 letterSpacing: "0.08em",
                             }}>
-                                インプラントについてはこちら →
+                                <span style={{ fontSize: "0.65rem" }}>▶</span>インプラントについてはこちら
                             </Link>
                         </div>
                     </div>
